@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
-import { attemptLogin, clearFormState } from '../actions'
+import { loginFormActions } from '../actions'
 import LoginForm from '../components/Login'
+
+const { attemptLogin, clearFormState } = loginFormActions;
 
 const mapStateToProps = (state) => {
   return {
