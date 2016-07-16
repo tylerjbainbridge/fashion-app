@@ -1,6 +1,7 @@
-import { connect } from 'react-redux'
-import { registrationFormActions } from '../actions'
-import CreateAcc from '../components/CreateAcc'
+import { connect } from 'react-redux';
+import { registrationFormActions,  } from '../actions';
+import { validateRegistration } from '../actions/validators/registration';
+import CreateAcc from '../components/CreateAcc';
 import { List, Map, fromJS } from 'immutable';
 
 console.log(registrationFormActions);

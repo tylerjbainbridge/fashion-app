@@ -1,5 +1,6 @@
 import request from 'superagent';
 import { validateRegistration } from './validators/registration';
+import { push } from 'react-router-redux';
 
 import {
   regFieldSuccess,
@@ -10,11 +11,14 @@ import {
   endSubmit
 } from './common/forms';
 
-export const submitRegistrationForm = ({ username, password }) => {
+export const submitRegistrationForm = ({ username, password, first_name, last_name, email }) => {
   return {
     type: 'SUBMIT_REGISTRATION_FORM',
     username,
-    password
+    password,
+    first_name,
+    last_name,
+    email
   }
 };
 
@@ -25,13 +29,14 @@ export const attemptRegistration = (form) => {
       .set('Content-Type', 'application/json')
       .send(form)
       .then(res => {
+        console.log(JSON.stringify(res.body));
         dispatch(successfulRegistrationSubmit());
         dispatch(loginUser(res.body));
-        dipatch(endSubmit('REGISTRATION'));
+        dispatch(endSubmit('REGISTRATION'));
         dispatch(push('/user'));
       })
       .catch(res => {
-        console.log(`ERR: ${res.body}`);
+        console.log(`ERR: ${res.err}`);
       });
   };
 };
@@ -39,6 +44,7 @@ export const attemptRegistration = (form) => {
 export const registrationFormChange = (type, value) => {
   return function ( dispatch ) {
     let error = validateRegistration(type, value);
+    console.log(error);
     if (!error){
       if(type == 'USERNAME'){
         return request.post('/checkUsername')
@@ -60,11 +66,8 @@ export const registrationFormChange = (type, value) => {
   }
 }
 
-export const successfulRegistrationSubmit = ({ username, userid, fullname }) => {
+export const successfulRegistrationSubmit = () => {
   return {
-    type: "SUCCESSFUL_REGISTRATION",
-    username,
-    userid,
-    fullname
+    type: "SUCCESSFUL_REGISTRATION"
   }
 };

@@ -1,4 +1,5 @@
 import request from 'superagent';
+import { push } from 'react-router-redux';
 
 import {
   regFieldSuccess,
@@ -8,6 +9,8 @@ import {
   clearFormState,
   endSubmit
 } from './common/forms';
+
+export { clearFormState };
 
 export const attemptLogin = (form) => {
   return function ( dispatch ) {

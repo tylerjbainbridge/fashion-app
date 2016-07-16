@@ -44,30 +44,39 @@ app.use(passport.session());
 app.use('/dist', proxy(url.parse('http://localhost:8080/assets')));
 
 app.post('/createAccount', (req, res) => {
-  var username = req.body.username.replace(/\s/g, '').toLowerCase();
-  var password = req.body.password;
 
-  console.log('attempting to create account')
-  Account.register(new Account({username: username}), password, (err, account) => {
-      if(err){
+  const { username, password, firstName, lastName, email } = req.body;
+
+  const newUser = new Account({
+    username: username.replace(/\s/g, '').toLowerCase(),
+    password,
+    firstName,
+    lastName,
+    email
+  });
+
+  console.log(newUser);
+
+  Account.register(newUser, password, (err, account) => {
+    if(err){
+      res.send(err);
+    }else if(account){
+      passport.authenticate('local', (err, user)=>{
+
+        if (err)
           res.send(err);
-      }else if(account){
-          passport.authenticate('local', (err, user)=>{
-              if (err)
-                  res.send(err);
-              if (!user)
-                  res.send(new Error('Incorrect Credentials.'));
+        if (!user)
+          res.send(new Error('Incorrect Credentials.'));
 
-              req.login(user, (err)=>{
-                  if (err)
-                      res.send(err);
-                  else
-                      res.send(user);
-              });
+        req.login(user, (err)=>{
+          if (err)
+            res.send(err);
+          else
+            res.send(user);
+        });
 
-          })(req, res);
-          // res.send(account);
-      }
+      })(req, res);
+    }
   });
 });
 

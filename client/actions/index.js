@@ -1,8 +1,9 @@
 import request from 'superagent';
 import { push } from 'react-router-redux';
+
 import * as loginForm from './loginForm.js';
 import * as registrationForm from './registrationForm.js';
-import { values } from 'lodash';
+import { loginUser } from './common/forms.js';
 
 export const loginFormActions = loginForm;
 export const registrationFormActions = registrationForm;

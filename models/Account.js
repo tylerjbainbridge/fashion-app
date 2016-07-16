@@ -3,7 +3,10 @@ import passportLocalMongoose from 'passport-local-mongoose';
 
 const Account = new Schema({
     username: String,
-    password: String
+    password: String,
+    firstName: String,
+    lastName: String,
+    email: String,
 });
 
 Account.plugin(passportLocalMongoose);
