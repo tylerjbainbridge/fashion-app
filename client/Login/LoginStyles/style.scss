@@ -1,0 +1,50 @@
+@import '../../Styles/colors';
+@import '../../Styles/fonts';
+
+
+.parentLogin {
+  width: 100%;
+  height: 200px;
+}
+
+.childLogin {
+  width: 155px;
+  margin: auto;
+
+  form {
+    margin: auto;
+    background-color: black;
+  }
+
+  div {
+    padding-bottom: 10px;
+    label {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  label.logErr{
+    color: $title-color;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  input {
+    text-align: center;
+    padding: 5px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 0.5px solid $accent-color !important;
+    background: none;
+  }
+}
+
+button.loginButtons {
+  margin: auto;
+  padding: 10px;
+}

@@ -1,0 +1,57 @@
+@import '../../Styles/colors';
+@import '../../Styles/fonts';
+
+.Nav {
+  top: 0;
+  display: inline-block;
+  width: 100%;
+  height: 75px;
+  background-color: $accent-color;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.NavRight {
+  //vertical align
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  float: right;
+  padding-right: 50px;
+}
+
+.NavLeft {
+
+  //vertical align
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  float: left;
+  padding-left: 50px;
+  span {
+    font-family: $title-font;
+    color: $title-color;
+    font-size:50px;
+    padding-bottom: 10px
+  }
+}
+
+.NavBtn {
+  padding-left: 30px;
+  font-family: $body-font;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+span.NavBtn {
+  color: white;
+}
+
+
+
+a.NavBtn{
+  text-decoration: none;
+  color: white;
+  letter-spacing: 3px;
+}

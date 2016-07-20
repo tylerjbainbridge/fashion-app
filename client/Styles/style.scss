@@ -1,0 +1,36 @@
+@import 'colors';
+@import 'fonts';
+
+html, body {
+  margin:0;
+  padding:0;
+}
+
+div.titleFont{
+  color: $title-color;
+  font-family: $title-font;
+  font-weight: normal;
+  font-size: 200px;
+  text-align: center;
+}
+
+h3 {
+  font-family: $body-font;
+  font-weight: normal;
+  color: $accent-color;
+  text-align: center;
+  font-size:32px;
+}
+
+.loginForm {
+  position: absolute;
+  margin: auto;
+  right: 0;
+  left: 0;
+  width: 270px;
+  height: 400px;
+}
+
+.header {
+  display: block;
+}

@@ -1,0 +1,14 @@
+# Docs
+docs/
+dist/
+
+# Misc
+node_modules/
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.travis.yml
+wallaby.config.js
+stats.json
