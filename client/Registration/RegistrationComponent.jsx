@@ -6,45 +6,37 @@ export default class registrationForm extends Component {
   render() {
     const { fields: { username, password, confirmPassword }, handleSubmit, submitting, register, asyncValidating } = this.props;
     return (
-      <form onSubmit={handleSubmit(register)}>
-        <div>
-          <label>Username</label>
+      <div className="parentRegister">
+      <form className="childRegister" onSubmit={handleSubmit(register)}>
           <div>
             <input type="text" placeholder="Username" {...username}/>
             {asyncValidating === 'username' && <i /* spinning cog *//>}
           </div>
-          {username.touched && username.error && <div>{username.error}</div>}
-        </div>
-
-        <div>
-          <label>Password</label>
+          <label className='regErr'>{username.touched && username.error && <div>{username.error}</div>}</label>
           <div>
             <input type="password" placeholder="Password" {...password}/>
           </div>
-          {username.touched && username.error && <div>{username.error}</div>}
-        </div>
-
-        <div>
-          <label>Confirm Password</label>
+          <label className='regErr'>{username.touched && username.error && <div>{username.error}</div>}</label>
           <div>
             <input type="password" placeholder="Confirm Password" {...confirmPassword}/>
           </div>
-          {confirmPassword.touched && confirmPassword.error && <div>{confirmPassword.error}</div>}
-        </div>
-
-        <div>
-          <button type="submit" disabled={submitting}>
+          <label className='regErr'>{confirmPassword.touched && confirmPassword.error && <div>{confirmPassword.error}</div>}</label>
+        <section>
+          <div id="regBtnCont">
+          <button className='registerButtons' type="submit" disabled={submitting}>
             {submitting ? <i/> : <i/>} Submit
           </button>
-
-          <button type="button">
+          </div>
+          <div id="cancelBtnCont">
+            <button id="cancelBtn" className='registerButtons' type="button">
             <Link to='/'>
               Cancel
             </Link>
-          </button>
-
-        </div>
+            </button>
+          </div>
+        </section>
       </form>
+      </div>
     )
   }
 }

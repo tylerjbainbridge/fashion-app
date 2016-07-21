@@ -7,6 +7,9 @@ import { attemptRegistration, checkUniqueUsername } from './RegistrationActions'
 
 import Registration from './RegistrationComponent';
 
+require('./RegistrationStyles/style.scss');
+
+
 export const fields = [ 'username', 'password', 'confirmPassword'];
 
 const mapStateToProps = (state) => {
