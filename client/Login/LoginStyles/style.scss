@@ -7,6 +7,10 @@
   height: 200px;
 }
 
+a {
+   outline: 0;
+}
+
 .childLogin {
   width: 500px;
   margin: auto;
@@ -73,6 +77,14 @@ section {
       margin: 0 auto;
       text-align: center;
     }
+}
+
+button:focus {
+  outline:0 !important;
+}
+
+button::-moz-focus-inner {
+  border:0 !important;
 }
 
 
