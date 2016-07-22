@@ -26,6 +26,7 @@ const store = createStoreWithMiddleware(reducers)
 //Components
 import App from './App/AppContainer';
 import User from './User/UserContainer';
+import Profile from './Profile/ProfileContainer';
 import Registration from './Registration/RegistrationContainer';
 import Login from './Login/LoginContainer';
 
@@ -36,7 +37,7 @@ render((
         <IndexRoute component = { Login } />
         <Route path = "/login" component = { Login }/>
         <Route path = "/register" component = { Registration }/>
-        <Route path = '/u/:username' component = { User }/>
+        <Route path = '/u/:username' component = { Profile }/>
       </Route>
     </Router>
   </Provider>

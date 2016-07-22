@@ -43,6 +43,15 @@ app.use(passport.session());
 
 app.use('/dist', proxy(url.parse('http://localhost:8080/assets')));
 
+app.get('/user/:username', (req, res) => {
+  const { username } = req.params;
+
+  Account.findByUsername(username, (err, usr) => {
+    console.log(usr);
+    return res.json(usr);
+  });
+});
+
 app.post('/createAccount', (req, res) => {
 
   const { username, password, firstName, lastName, email } = req.body;

@@ -7,12 +7,15 @@ import {reducer as formReducer} from 'redux-form';
 import { loginForm } from './Login/LoginReducer';
 import { registrationForm } from './Registration/RegistrationReducer';
 import { user } from './User/UserReducer';
+import { profile } from './Profile/ProfileReducer';
+
 
 
 export default combineReducers({
     loginForm,
     registrationForm,
     user,
+    profile,
     routing: routerReducer,
     form: formReducer
 });
