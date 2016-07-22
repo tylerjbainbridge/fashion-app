@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 
 export default class User extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+    this.username = this.props.params.username;
   }
 
-  componentDidMount(){
-    if(this.props.username == null){
-      this.props.getLoggedUser();
-    }
+  componentWillMount() {
+    this.props.getProfile(this.username);
   }
 
-  render(){
+  render() {
     return (
-      <h1>{this.props.username}</h1>
+      <h1>hello</h1>
     )
   }
 }

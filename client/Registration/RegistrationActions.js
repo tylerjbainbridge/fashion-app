@@ -8,12 +8,11 @@ export const attemptRegistration = (form) => {
       .send(form)
       .then(res => {
         console.log('successful registration ', res.body);
-        dispatch(successfulRegistrationSubmit());
         dispatch(loginUser(res.body));
         dispatch(push('/user'));
       })
       .catch(res => {
-        dispatch(errorRegistration(res.err.message));
+        dispatch(errorRegistration(res.err));
         console.log(`ERR: ${res.err}`);
       });
   };
@@ -27,7 +26,7 @@ export const checkUniqueUsername = username => {
         .send({ username })
         .then(res => {
           if(res.body.username){
-            reject({ username: 'That username is taken' });
+            reject({ username: 'That username is already in use.' });
           }else{
             resolve();
           }

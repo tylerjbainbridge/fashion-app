@@ -36,7 +36,7 @@ render((
         <IndexRoute component = { Login } />
         <Route path = "/login" component = { Login }/>
         <Route path = "/register" component = { Registration }/>
-        <Route path ='/user' component = { User }/>
+        <Route path = '/u/:username' component = { User }/>
       </Route>
     </Router>
   </Provider>

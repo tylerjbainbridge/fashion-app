@@ -19,6 +19,10 @@ export default class App extends Component {
     return(
       <div>
         <NavBar/>
+
+          <Row className="show-grid">
+            {this.props.children}
+          </Row>
       </div>
     )
   }

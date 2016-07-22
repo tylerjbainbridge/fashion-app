@@ -14,7 +14,7 @@ class NavBar extends Component {
            <span>Styl</span>
          </div>
          <div className = 'NavRight'>
-              <Link to= {`/u/${this.props.username}`} className = 'NavBtn'>
+              <Link to= {`user/${this.props.username}`} className = 'NavBtn'>
                 { this.props.username.toUpperCase() }
               </Link>
               <Link to='/login' className = 'NavBtn'>
