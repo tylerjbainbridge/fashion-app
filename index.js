@@ -3,7 +3,7 @@
 
 require('babel/register')({});
 
-var server = require('./server');
+var server = require('./server/');
 
 const PORT = process.env.PORT || 3000;
 

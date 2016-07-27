@@ -1,0 +1,108 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+
+.parentLogin {
+  width: 100%;
+  height: 200px;
+}
+
+a {
+   outline: 0;
+}
+
+.childLogin {
+  width: 500px;
+  margin: auto;
+
+  form {
+    margin: auto;
+    background-color: black;
+  }
+
+  div {
+    padding-bottom: 10px;
+    label {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  label.logErr{
+    color: $title-color;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  input {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 200px;
+    text-align: center;
+    padding: 5px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 0.5px solid $accent-color !important;
+    background: none;
+  }
+}
+
+#loginBtnCont{
+  float: none;
+  margin: 0 auto;
+  display: inline;
+  width: 50%;
+}
+
+#cancelBtnCont{
+  margin: 0 auto;
+  float: none;
+  display: inline;
+  width: 50%;
+}
+
+
+section {
+    width:300px;
+    height: 200px;
+    margin: auto;
+    padding-top: 15px;
+    padding: 10px;
+    button{
+      margin: 0 auto;
+      text-align: center;
+    }
+}
+
+button:focus {
+  outline:0 !important;
+}
+
+button::-moz-focus-inner {
+  border:0 !important;
+}
+
+
+button.loginButtons {
+  a{
+      text-decoration: none;
+      color: currentColor;
+  }
+  width: 46%;
+  margin: 2%;
+  display: inline;
+  background-color: transparent;
+  border: solid 1px;
+  transition: 0.5s ease;
+  border-radius: 50px;
+  padding: 1px;
+  &:hover{
+    transition: 0.5s ease;
+    text-decoration: underline;
+  }
+}

@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import reducers from './reducers'
 import { Router, Route, IndexRoute, browserHistory, Link, withRouter } from 'react-router';
 import { routerMiddleware, push } from 'react-router-redux'
-require('./Styles/style.scss');
+require('./styles/style.scss');
 
 // Use _key instead of _k.
 let history = createHistory({
@@ -24,10 +24,11 @@ const store = createStoreWithMiddleware(reducers)
 // )
 
 //Components
-import App from './App/AppContainer';
-import User from './User/UserContainer';
-import Registration from './Registration/RegistrationContainer';
-import Login from './Login/LoginContainer';
+import App from './components/App/AppContainer';
+import User from './components/User/UserContainer';
+import Profile from './components/Profile/ProfileContainer';
+import Registration from './components/Registration/RegistrationContainer';
+import Login from './components/Login/LoginContainer';
 
 render((
   <Provider store = { store }>
@@ -36,7 +37,7 @@ render((
         <IndexRoute component = { Login } />
         <Route path = "/login" component = { Login }/>
         <Route path = "/register" component = { Registration }/>
-        <Route path ='/user' component = { User }/>
+        <Route path = '/u/:username' component = { Profile }/>
       </Route>
     </Router>
   </Provider>
