@@ -6,24 +6,35 @@ export default class Profile extends Component {
     this.username = this.props.params.username;
   }
 
+  displayNotFound() {
+    return (
+      <h1>{ this.props.errors }</h1>
+    )
+  }
+
   componentWillMount() {
-    this.props.getProfile(this.username).then(() => {
-      this.isThisYourProfile();
-      console.log(this.props.params.username, this.props.username);
-    })
+    this.props.getProfile(this.username)
+      .then(() => {
+        this.isThisYourProfile();
+      })
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.params.username != this.props.profile.get('username')){
+    let notSameAsUrl = (nextProps.params.username != this.props.user.username);
+    // let userIsNull = ((this.props.user.username === null) || (typeof this.props.user.username === 'undefined'));
+    console.log(`URL: ${nextProps.params.username} Profile ${this.props.user.username}`);
+
+    if(notSameAsUrl){
       this.username = nextProps.params.username;
-      this.props.getProfile(nextProps.params.username).then(() => {
+      this.props.getProfile(nextProps.params.username)
+      .then(() => {
         this.isThisYourProfile();
       });
     }
   }
 
   isThisYourProfile(){
-    if(this.props.profile.get('username') == this.props.username) {
+    if(this.props.user.username == this.props.username) {
       this.yourProfile = true;
     }else{
       this.yourProfile = false;
@@ -31,14 +42,21 @@ export default class Profile extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <h1>username: {this.props.profile.get('username')}</h1>
-        <h1>firstname: {this.props.profile.get('firstName')}</h1>
-        <h1>lastname: {this.props.profile.get('lastName')}</h1>
-        <h1>email: {this.props.profile.get('email')}</h1>
-        {this.yourProfile ? <h1>you</h1> : <h1>not your</h1>}
-      </div>
-    )
+
+    if(!this.props.user.username){
+      return (
+        <h1>{ this.props.error }</h1>
+      )
+    } else {
+      return (
+        <div>
+          <h1>username: { this.props.user.username }</h1>
+          <h1>firstname: { this.props.user.firstName }</h1>
+          <h1>lastname: { this.props.user.lastName }</h1>
+          <h1>email: { this.props.user.email }</h1>
+          { this.yourProfile ? <h1>you</h1> : <h1>not your</h1> }
+        </div>
+      )
+    }
   }
 }

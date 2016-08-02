@@ -1,16 +1,16 @@
-import { List, Map, fromJS } from 'immutable';
+import { Map } from 'immutable';
 
 const initialRegistration = new Map({
-  errors: null
+  errors: null,
 });
 
-export const registrationForm = (state = initialRegistration, action) => {
-  switch(action.type) {
-
+const registrationForm = (state = initialRegistration, action) => {
+  switch (action.type) {
     case 'ERRORS_REGISTRATION':
       return state.set('errors', action.message);
-
     default:
       return state;
   }
-}
+};
+
+export default registrationForm;

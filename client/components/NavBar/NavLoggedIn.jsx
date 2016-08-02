@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-class NavLoggedIn extends Component {
+export default class NavLoggedIn extends Component {
   constructor(props){
     super(props);
     this.handleClick = props.onClick;
   }
-
-  // handleClick(){
-  //   this.props.onClick();
-  // }
 
   render(){
    return (
@@ -29,5 +25,3 @@ class NavLoggedIn extends Component {
    )
   }
 }
-
-export default NavLoggedIn;

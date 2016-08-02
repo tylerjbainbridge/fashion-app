@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import autoBind from 'react-autobind';
 import { Link } from 'react-router';
 
 export default class loginForm extends Component {
   render() {
-    const { fields: { username, password }, handleSubmit, submitting, login } = this.props;
+    const { fields: { username, password }, handleSubmit, submitting, login, redirect } = this.props;
     return (
       <div className="parentLogin">
-        <form className="childLogin form" onSubmit={handleSubmit(login)}>
+        <form className="childLogin form" onSubmit={ handleSubmit(login.bind(null, redirect)) }>
           <div>
             {/*<label>Username</label>*/}
             <div>

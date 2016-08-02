@@ -1,17 +1,22 @@
-import { List, Map, fromJS } from 'immutable';
+import { Map, fromJS } from 'immutable';
 
 const initialUserState = new Map({
   username: null,
-  userid: null
+  userid: null,
+  redirect: null,
 });
 
 export const user = (state = initialUserState, action) => {
   switch (action.type) {
-    case "LOG_IN":
+    case 'LOG_IN':
       return fromJS(action.user);
-    case "LOG_OUT":
+    case 'LOG_OUT':
       return initialUserState;
+    case 'CLICK_LOGIN':
+      return state.update('redirect', () => action.redirect);
     default:
-      return state
+      return state;
   }
-}
+};
+
+// export default user;

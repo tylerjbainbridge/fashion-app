@@ -18,11 +18,12 @@ export default class App extends Component {
   displayLoggedIn(){
     return(
       <div>
-        <NavBar/>
-
-          <Row className="show-grid">
-            {this.props.children}
-          </Row>
+        <Row>
+          <NavBar url={this.props.location.pathname}/>
+        </Row>
+        <Row className="show-grid">
+          {this.props.children}
+        </Row>
       </div>
     )
   }
@@ -32,13 +33,7 @@ export default class App extends Component {
       <Grid>
 
         <Row>
-          <NavBar/>
-        </Row>
-
-        <Row className="show-grid">
-          <Col sm={6} smOffset={5}>
-            <div className="titleFont">Styl</div>
-          </Col>
+          <NavBar url={this.props.location.pathname}/>
         </Row>
 
         <br/>
@@ -51,10 +46,40 @@ export default class App extends Component {
     )
   }
 
-  render(){
-    if(this.props.userid == null){
+  displayHomePage () {
+    return (
+      <Grid>
+
+        <Row>
+          <div className="titleFont">Styl</div>
+        </Row>
+
+        <Row className="show-grid">
+          {this.props.children}
+        </Row>
+
+      </Grid>
+    )
+  }
+
+  isHome () {
+    if (this.props.location.pathname === '/') {
+      return true;
+    } else if (this.props.location.pathname === '/login') {
+      return true;
+    } else if (this.props.location.pathname === '/register') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  render () {
+    if (this.isHome() && this.props.userid == null ) {
+      return this.displayHomePage();
+    } else if (this.props.userid == null) {
       return this.displayNotLoggedIn();
-    }else{
+    } else {
       return this.displayLoggedIn();
     }
   }

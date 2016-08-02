@@ -1,43 +1,46 @@
-import React, { createClass } from 'react';
 import { render } from 'react-dom';
-import { createHistory } from 'history'
-// import createHistory from 'history/lib/createMemoryHistory';
+import { createHistory } from 'history';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { Router, Route, IndexRoute } from 'react-router';
+import { routerMiddleware } from 'react-router-redux';
+import React from 'react';
 import thunk from 'redux-thunk';
-import reducers from './reducers'
-import { Router, Route, IndexRoute, browserHistory, Link, withRouter } from 'react-router';
-import { routerMiddleware, push } from 'react-router-redux'
+import reducers from './reducers';
+
+//  Components.
+import App from './components/App/AppContainer';
+import Profile from './components/Profile/ProfileContainer';
+import Registration from './components/Registration/RegistrationContainer';
+import Login from './components/Login/LoginContainer';
+import Home from './components/Home/HomeContainer';
+import NotFound from './components/NotFound/NotFoundComponent';
+
+//  Styles.
 require('./styles/style.scss');
 
-// Use _key instead of _k.
+//  Use _key instead of  _k.
 let history = createHistory({
-  queryKey: '_key'
+  queryKey: '_key',
 });
 
-const browserMiddleware = routerMiddleware(history); // Added this line
-const createStoreWithMiddleware = applyMiddleware(browserMiddleware, thunk)(createStore)
-const store = createStoreWithMiddleware(reducers)
+const browserMiddleware = routerMiddleware(history);
+const createStoreWithMiddleware = applyMiddleware(browserMiddleware, thunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
 
 // let unsubscribe = store.subscribe(() =>
 //   console.log(store.getState())
 // )
 
-//Components
-import App from './components/App/AppContainer';
-import User from './components/User/UserContainer';
-import Profile from './components/Profile/ProfileContainer';
-import Registration from './components/Registration/RegistrationContainer';
-import Login from './components/Login/LoginContainer';
-
 render((
-  <Provider store = { store }>
-    <Router history = { history }>
-      <Route path = "/" component = { App } >
-        <IndexRoute component = { Login } />
-        <Route path = "/login" component = { Login }/>
-        <Route path = "/register" component = { Registration }/>
-        <Route path = '/u/:username' component = { Profile }/>
+  <Provider store={store} >
+    <Router history={history} >
+      <Route path="/" component={App} >
+        <IndexRoute component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Registration} />
+        <Route path="/u/:username" component={Profile} />
+        <Router path="404" component={NotFound} />
       </Route>
     </Router>
   </Provider>

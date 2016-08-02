@@ -1,60 +1,83 @@
 import request from 'superagent';
 import { push } from 'react-router-redux';
 
-export const getLoggedUser = () => {
-  return function ( dispatch ) {
-    request.get('/getUser')
+
+export function loginUser({ username, _id }) {
+  return {
+    type: 'LOG_IN',
+    user: {
+      username,
+      userid: _id,
+    },
+  };
+}
+
+export function getLoggedUser() {
+  return (dispatch) => {
+    request.get('/user/getUser')
       .set('Content-Type', 'application/json')
       .then(res => {
-        if(res.body){
+        if (res.body) {
           dispatch(loginUser(res.body));
         }
       });
   };
-};
-
-export const getUserProfile = (username) => {
-  return function (dispatch) {
-    request.get(`/user/${username}`)
-      .set('Content-Type', 'application/json')
-      .then(res => {
-        if(res.body){
-          dispatch(setProfile(res.body));
-        }else{
-          dispatch(cantFindProfileWith(username));
-        }
-      });
-
-  }
 }
 
-export const logoutUser = () => {
-  return function (dispatch) {
-    console.log('hello');
-    request.get(`/logout`)
+
+export function logoutUserState() {
+  return {
+    type: 'LOG_OUT',
+  };
+}
+
+
+export function logoutError(err) {
+  return {
+    type: 'ERROR',
+    err,
+  };
+}
+
+export function logoutUser() {
+  return (dispatch) => {
+    request.get('/user/logout')
       .set('Content-Type', 'application/json')
-      .then(res => {
+      .then(() => {
+        console.log('hello');
         dispatch(logoutUserState());
         dispatch(push('/'));
       })
       .catch((err) => {
-        console.log(err);
-      })
-  }
-};
+        dispatch(logoutError(err));
+      });
+  };
+}
 
-export const logoutUserState = () => {
+export function clickLoginState(redirect) {
   return {
-    type: 'LOG_OUT'
-  }
-};
+    type: 'CLICK_LOGIN',
+    redirect,
+  };
+}
 
-export const loginUser = ({ username, _id }) => {
-  return {
-    type: "LOG_IN",
-    user: {
-      username,
-      userid: _id
-    }
-  }
-};
+export function clickLogin(redirect) {
+  return (dispatch) => {
+    dispatch(clickLoginState(redirect));
+    dispatch(push('/login'));
+  };
+}
+
+// export function getUserProfile(username) {
+//   return (dispatch) => {
+//     request.get(`/user/${username}`)
+//       .set('Content-Type', 'application/json')
+//       .then(res => {
+//         if (res.body) {
+//           dispatch(setProfile(res.body));
+//         } else {
+//           dispatch(cantFindProfileWith(username));
+//         }
+//       });
+//   }
+// }

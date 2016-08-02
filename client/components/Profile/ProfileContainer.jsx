@@ -6,7 +6,8 @@ import Profile from './ProfileComponent';
 const mapStateToProps = (state, { params }) => {
   return {
     username: state.user.get('username'),
-    profile: state.profile,
+    error: state.profile.get('error'),
+    user: state.profile.get('user'),
     yourProfile: state.user.get('username') == params.username,
     params
   }

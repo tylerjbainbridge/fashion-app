@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NavBar from './NavBarComponent';
-import { logoutUser } from '../User/UserActions';
+import { logoutUser, clickLogin } from '../User/UserActions';
 
 require('./NavBarStyles/style.scss');
 
@@ -14,6 +14,9 @@ const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
       return dispatch(logoutUser());
+    },
+    clickLogin: (redirect)=> {
+      return dispatch(clickLogin(redirect))
     }
   }
 };
