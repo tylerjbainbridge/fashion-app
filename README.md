@@ -2,6 +2,11 @@
 
 To run.
 
+## Instal dependencies.
+```bash
+npm install
+```
+
 ## Start mongo.
 ```bash
 sudo mongod
@@ -18,10 +23,9 @@ npm run dev
 - Node.js
 - Express.js
 - MongoDB/Mongoose
-- Webpack for transpiling.
-- Babel for ES6 and JSX
+- Webpack/Babel
 
-Soon:
+### Coming Soon:
 - Mocha/Chai
 - GraphQL
 - Docker
