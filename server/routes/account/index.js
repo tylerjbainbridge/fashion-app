@@ -50,7 +50,6 @@ router.post('/createAccount', (req, res) => {
         });
       })(req, res);
     }
-    return res.sendStatus(404);
   });
 });
 

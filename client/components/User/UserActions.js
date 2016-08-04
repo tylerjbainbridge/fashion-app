@@ -1,7 +1,6 @@
 import request from 'superagent';
 import { push } from 'react-router-redux';
 
-
 export function loginUser({ username, _id }) {
   return {
     type: 'LOG_IN',

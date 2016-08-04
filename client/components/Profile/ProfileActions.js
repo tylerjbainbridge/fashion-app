@@ -42,7 +42,7 @@ export function getUserProfile(username) {
               userid: null,
             }));
             dispatch(cantFindProfileWith(username));
-            dispatch(push('/404'));
+            // dispatch(push('/404'));
             resolve();
           }
         })

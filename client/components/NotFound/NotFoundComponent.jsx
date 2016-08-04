@@ -8,7 +8,7 @@ export default class NotFound extends Component {
 
   render() {
     return (
-      <h1>Cannot find page.</h1>
+      <h1 style={{ 'textAlign': 'center' }} >Cannot find page.</h1>
     )
   };
 };

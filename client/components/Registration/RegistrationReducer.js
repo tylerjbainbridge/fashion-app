@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 
 const initialRegistration = new Map({
   errors: null,
+  step: 1
 });
 
 const registrationForm = (state = initialRegistration, action) => {

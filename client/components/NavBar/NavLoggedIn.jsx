@@ -11,15 +11,17 @@ export default class NavLoggedIn extends Component {
    return (
      <div className = 'Nav'>
        <div className = 'NavLeft'>
-         <span>Styl</span>
+         <Link to='/'>
+           Styl
+         </Link>
        </div>
        <div className = 'NavRight'>
-            <Link to= {`/u/${this.props.username}`} className = 'NavBtn'>
-              { this.props.username.toUpperCase() }
-            </Link>
-            <button onClick={() => this.handleClick()} className = 'NavBtn'>
-              LOGOUT
-            </button>
+          <Link to= {`/u/${this.props.username}`} className = 'NavBtn'>
+            { this.props.username.toUpperCase() }
+          </Link>
+          <button onClick={() => this.handleClick()} className = 'NavBtn'>
+            LOGOUT
+          </button>
         </div>
      </div>
    )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserInfo from './Components/UserInfo';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -20,12 +21,13 @@ export default class Profile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let notSameAsUrl = (nextProps.params.username != this.props.user.username);
-    // let userIsNull = ((this.props.user.username === null) || (typeof this.props.user.username === 'undefined'));
-    console.log(`URL: ${nextProps.params.username} Profile ${this.props.user.username}`);
+    let nextPath    = nextProps.params.username;
+    let currentPath = this.props.params.username;
+    let diffPaths = (nextPath != currentPath);
 
-    if(notSameAsUrl){
+    if (diffPaths) {
       this.username = nextProps.params.username;
+
       this.props.getProfile(nextProps.params.username)
       .then(() => {
         this.isThisYourProfile();
@@ -42,21 +44,27 @@ export default class Profile extends Component {
   }
 
   render() {
-
     if(!this.props.user.username){
       return (
-        <h1>{ this.props.error }</h1>
+        <h1 style={{ 'textAlign': 'center' }} >{ this.props.error }.</h1>
       )
     } else {
       return (
-        <div>
-          <h1>username: { this.props.user.username }</h1>
-          <h1>firstname: { this.props.user.firstName }</h1>
-          <h1>lastname: { this.props.user.lastName }</h1>
-          <h1>email: { this.props.user.email }</h1>
-          { this.yourProfile ? <h1>you</h1> : <h1>not your</h1> }
-        </div>
+        <UserInfo
+          user={this.props.user}
+          yourProfile={this.yourProfile}
+        />
       )
     }
   }
 }
+
+/**
+ *         <div>
+           <h1>username: { this.props.user.username }</h1>
+           <h1>firstname: { this.props.user.firstName }</h1>
+           <h1>lastname: { this.props.user.lastName }</h1>
+           <h1>email: { this.props.user.email }</h1>
+           { this.yourProfile ? <h1>you</h1> : <h1>not your</h1> }
+         </div>
+ */

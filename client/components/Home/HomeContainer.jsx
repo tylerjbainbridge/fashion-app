@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getLoggedUser } from '../User/UserActions';
+import { changeStepTo } from '../Registration/RegistrationActions';
 import Home from './HomeComponent';
 
 const mapStateToProps = state => {
@@ -12,6 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getLoggedUser: () => {
       dispatch(getLoggedUser());
+    },
+    backToStepOne: () => {
+      dispatch(changeStepTo(1));
     }
   }
 };

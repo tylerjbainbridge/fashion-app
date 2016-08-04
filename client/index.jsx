@@ -14,10 +14,12 @@ import Profile from './components/Profile/ProfileContainer';
 import Registration from './components/Registration/RegistrationContainer';
 import Login from './components/Login/LoginContainer';
 import Home from './components/Home/HomeContainer';
+import UploadProPic from './components/UploadProPic/UploadProPicContainer';
 import NotFound from './components/NotFound/NotFoundComponent';
 
 //  Styles.
 require('./styles/style.scss');
+require('./styles/ReactCrop.scss');
 
 //  Use _key instead of  _k.
 let history = createHistory({
@@ -40,6 +42,7 @@ render((
         <Route path="/login" component={Login} />
         <Route path="/register" component={Registration} />
         <Route path="/u/:username" component={Profile} />
+        <Route path="/updateProfilePicture" component={UploadProPic} />
         <Router path="404" component={NotFound} />
       </Route>
     </Router>

@@ -1,17 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import { registrationValidation } from './RegistrationValidation';
 import { attemptRegistration, checkUniqueUsername } from './RegistrationActions';
 
 import Registration from './RegistrationComponent';
 
-export const fields = [ 'username', 'password', 'firstName', 'lastName', 'confirmPassword', 'email'];
+export const fields = [ 'username', 'password', 'firstName', 'lastName', 'confirmPassword', 'email', 'propic'];
 
 const mapStateToProps = (state) => {
     return {
-      errors: state.get('registrationForm').get('errors')
+      step: state.user.get('step')
     }
 }
 
@@ -24,6 +25,7 @@ const mapStateToProps = (state) => {
 // }
 
 const register = (form, dispatch) => {
+  console.log(form);
   dispatch(
     attemptRegistration(form)
   );
@@ -37,7 +39,7 @@ const checkUsername = (form, dispatch) => {
   });
 }
 
-export default reduxForm({
+const form = reduxForm({
   form: 'Register',
   fields,
   register,
@@ -46,3 +48,7 @@ export default reduxForm({
   asyncBlurFields: [ 'username' ],
   validate: registrationValidation
 })(Registration);
+
+export default connect(
+  mapStateToProps
+)(form);

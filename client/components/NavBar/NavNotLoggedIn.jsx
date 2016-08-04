@@ -11,15 +11,14 @@ export default class NavNotLoggedIn extends Component {
    return (
      <div className = 'Nav'>
        <div className = 'NavLeft'>
-         <span>Styl</span>
+         <Link to='/'>
+           Styl
+         </Link>
        </div>
        <div className = 'NavRight'>
          <button onClick={() => this.handleClick(this.props.url)} className = 'NavBtn'>
            LOGIN
          </button>
-          {/*<Link to='/login' className = 'NavBtn'>
-            LOGIN
-          </Link>*/}
           <Link to='/register' className = 'NavBtn'>
             LOGOUT
           </Link>

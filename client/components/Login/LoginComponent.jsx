@@ -23,20 +23,16 @@ export default class loginForm extends Component {
             <label className='logErr'>{password.touched && password.error && <div>{password.error}</div>}</label>
           </div>
 
-          <section>
-            <div id="loginBtnCont">
-              <button id="loginBtn" className='loginButtons' type="submit" disabled={submitting}>
-                {submitting ? <i/> : <i/>} Submit
-              </button>
-            </div>
-            <div id="cancelBtnCont">
-              <button id="cancelBtn" className='loginButtons' type="button">
-                <Link to='/'>
-                  Cancel
-                </Link>
-              </button>
-            </div>
-          </section>
+          <div className="formButtons">
+            <button type="submit" disabled={submitting}>
+              {submitting ? <i/> : <i/>} Submit
+            </button>
+            <button type="button">
+              <Link to='/'>
+                Cancel
+              </Link>
+            </button>
+          </div>
         </form>
       </div>
     )
