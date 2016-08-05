@@ -26,7 +26,7 @@ export function loginUser({ username, _id }) {
 
 export function attemptRegistration(form) {
   return (dispatch) =>
-    request.post('/user/createAccount')
+    request.post('/user/create/account')
       .set('Content-Type', 'application/json')
       .send(form)
       .then(res => {

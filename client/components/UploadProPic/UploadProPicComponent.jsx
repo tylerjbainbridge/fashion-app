@@ -12,9 +12,8 @@ export default class StepTwo extends Component {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      if(reader.result){
-        let result = reader.result;
-        imageChanged(result);
+      if (reader.result) {
+        imageChanged(reader.result);
       }
     }
   }
@@ -25,7 +24,11 @@ export default class StepTwo extends Component {
 
   cropImage(image) {
     return (
-       <ReactCrop crop={this.props.crop} src={this.props.image} onComplete={this.setCrop.bind(null, this.props.cropChanged)}/>
+       <ReactCrop 
+         crop={this.props.crop}
+         src={this.props.image}
+         onComplete={this.setCrop.bind(null, this.props.cropChanged)}
+         />
     )
   }
 

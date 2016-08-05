@@ -14,6 +14,10 @@ export const image = (state = initialImageState, action) => {
       return state.update('image', () => action.image);
     case 'UPDATE_CROP':
       return state.update('crop', () => action.crop);
+    case 'DELETE_IMAGE':
+      return state.update('image', () => null);
+    case 'RESET_CROP':
+      return state.update('crop', () => null);
     default:
       return state;
   }

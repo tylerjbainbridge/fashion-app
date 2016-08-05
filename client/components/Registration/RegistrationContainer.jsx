@@ -11,9 +11,9 @@ import Registration from './RegistrationComponent';
 export const fields = [ 'username', 'password', 'firstName', 'lastName', 'confirmPassword', 'email', 'propic'];
 
 const mapStateToProps = (state) => {
-    return {
-      step: state.user.get('step')
-    }
+  return {
+    step: state.user.get('step')
+  }
 }
 
 // const mapDispatchToProps = (dispatch) => {
@@ -25,7 +25,6 @@ const mapStateToProps = (state) => {
 // }
 
 const register = (form, dispatch) => {
-  console.log(form);
   dispatch(
     attemptRegistration(form)
   );

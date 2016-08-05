@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import UploadProPicComponent from './UploadProPicComponent';
-import { updateImage, updateCrop } from '../Images/ImageActions';
+import { updateImage, updateCrop, attemptUploadProPic } from '../Images/ImageActions';
 export const fields = ['propic'];
 
 
@@ -26,11 +26,12 @@ const mapDispatchToProps = dispatch => {
 };
 
 const upload = (crop, form, dispatch) => {
-  form.crop = crop;
-  console.log(form);
-  dispatch(
-    attemptUpload(form)
-  );
+  new Promise((resolve, reject) => {
+    form.crop = crop;
+    dispatch(
+      attemptUploadProPic(form)
+    );
+  });
 }
 
 const form = reduxForm({

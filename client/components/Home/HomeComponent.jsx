@@ -15,7 +15,7 @@ export default class Home extends Component {
               </Link>
             </div>
             <div className="homeLink">
-              <Link to='/register' onClick={() => backToStepOne()}>
+              <Link to='/register'>
                 Register
               </Link>
             </div>

@@ -3,7 +3,11 @@ import passport from 'passport';
 import { Strategy } from 'passport-local';
 import { Account } from '../../models';
 
+import AccountUpdateRouter from './crud/update';
+import AccountCreateRouter from './crud/create';
+
 const router = express();
+
 //  Passport config
 passport.use(new Strategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
@@ -11,46 +15,15 @@ passport.deserializeUser(Account.deserializeUser());
 router.use(passport.initialize());
 router.use(passport.session());
 
+router.use('/update', AccountUpdateRouter);
+router.use('/create', AccountCreateRouter);
+
 router.get('/by/:username', (req, res) => {
   const { username } = req.params;
 
   Account.findByUsername(username, (err, usr) =>
     res.json(usr)
   );
-});
-
-router.post('/createAccount', (req, res) => {
-  const { username, password, firstName, lastName, email } = req.body;
-
-  const newUser = new Account({
-    username: username.replace(/\s/g, '').toLowerCase(),
-    password,
-    firstName,
-    lastName,
-    email,
-  });
-
-  Account.register(newUser, password, (err, account) => {
-    if (err) {
-      return res.send(err);
-    } else if (account) {
-      passport.authenticate('local', (err2, user) => {
-        if (err2) {
-          return res.send(err2);
-        } else if (!user) {
-          return res.send(new Error('Incorrect Credentials.'));
-        }
-
-        req.login(user, (err3) => {
-          if (err3) {
-            return res.send(err3);
-          }
-
-          return res.send(user);
-        });
-      })(req, res);
-    }
-  });
 });
 
 router.post('/login', (req, res) => {

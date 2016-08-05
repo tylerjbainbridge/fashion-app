@@ -20,7 +20,7 @@ export default class NavNotLoggedIn extends Component {
            LOGIN
          </button>
           <Link to='/register' className = 'NavBtn'>
-            LOGOUT
+            CREATE
           </Link>
         </div>
      </div>

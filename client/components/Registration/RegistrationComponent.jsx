@@ -10,15 +10,7 @@ export default class registrationForm extends Component {
       <div className="parentLogin">
         <form className="childLogin form" onSubmit={handleSubmit(register)}>
           <FormContent {...this.props} />
-          {/*{(step == 1) ?
-          <StepOne {...this.props} submitting={submitting}/> :
-          <StepTwo
-            {...this.props}
-            submitting={submitting}
-            /> }*/}
-
-      </form>
-
+        </form>
       </div>
     )
   }
