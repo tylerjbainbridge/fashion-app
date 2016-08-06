@@ -1,34 +1,25 @@
-import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { Link } from 'react-router';
-
 import { loginValidation } from './LoginValidation';
 import { attemptLogin } from './LoginActions';
-
 import Login from './LoginComponent';
 
-export const fields = [ 'username', 'password'];
+export const fields = ['username', 'password'];
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
   return {
-    redirect: state.user.get('redirect')
-  }
-};
-
-const login = (redirect, form, dispatch) => {
-  return new Promise((resolve, reject) => {
-    form.username = form.username.toLowerCase();
-    dispatch(
-      attemptLogin(form, redirect)
-    ).then(resolve).catch(reject);
-  })
+    redirect: state.user.get('redirect'),
+  };
 }
 
-const checkUsername = (form, dispatch) => {
+function login(redirect, form, dispatch) {
   return new Promise((resolve, reject) => {
+    const newForm = Object.assign({}, form, {
+      username: form.username.toLowerCase(),
+    });
+    // form.username = form.username.toLowerCase();
     dispatch(
-      checkUniqueUsername(form.username)
+      attemptLogin(newForm, redirect)
     ).then(resolve).catch(reject);
   });
 }
@@ -37,7 +28,7 @@ const form = reduxForm({
   form: 'Login',
   fields,
   login,
-  validate: loginValidation
+  validate: loginValidation,
 })(Login);
 
 export default connect(

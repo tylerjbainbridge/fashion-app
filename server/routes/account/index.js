@@ -1,19 +1,11 @@
 import express from 'express';
 import passport from 'passport';
-import { Strategy } from 'passport-local';
 import { Account } from '../../models';
 
 import AccountUpdateRouter from './crud/update';
 import AccountCreateRouter from './crud/create';
 
 const router = express();
-
-//  Passport config
-passport.use(new Strategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
-router.use(passport.initialize());
-router.use(passport.session());
 
 router.use('/update', AccountUpdateRouter);
 router.use('/create', AccountCreateRouter);
@@ -54,7 +46,7 @@ router.get('/getUser', (req, res) =>
 router.post('/checkUsername', (req, res) => {
   const { username } = req.body;
 
-  Account.findByUsername(req.body.username, (err, usr) => {
+  Account.findByUsername(username, (err, usr) => {
     res.json({ username: usr ? usr.username : false });
   });
 });

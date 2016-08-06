@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
 
-export default class NotFound extends Component {
-  constructor(props) {
-    super(props);
-  };
-
-  render() {
-    return (
-      <h1 style={{ 'textAlign': 'center' }} >Cannot find page.</h1>
-    )
-  };
+const NotFound = () => {
+  //  Placeholder until there is more relevant info.
+  const message = 'Cannot find page.';
+  return (
+    <h1 style={{ textAlign: 'center' }}>
+      { message }
+    </h1>
+  );
 };
+
+export default NotFound;

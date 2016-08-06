@@ -2,19 +2,19 @@ import { connect } from 'react-redux';
 import { getLoggedUser } from '../User/UserActions';
 import App from './AppComponent';
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
   return {
-    userid: state.user.get('userid')
-  }
+    userid: state.user.get('userid'),
+  };
 }
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
   return {
     getLoggedUser: () => {
       dispatch(getLoggedUser());
-    }
-  }
-};
+    },
+  };
+}
 
 const AppContainer = connect(
   mapStateToProps,

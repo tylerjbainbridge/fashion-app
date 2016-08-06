@@ -33,7 +33,7 @@ export function attemptRegistration(form) {
         //  TODO: turn into action.
         //  console.log('successful registration ', res.body.username);
         dispatch(loginUser(res.body));
-        dispatch(push(`/updateProfilePicture`));
+        dispatch(push('/updateProfilePicture'));
       })
       .catch(res => {
         dispatch(errorRegistration(res.err));

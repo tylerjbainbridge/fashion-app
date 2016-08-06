@@ -1,24 +1,23 @@
-import React, { Component, PropTypes } from 'react';
-import autoBind from 'react-autobind';
-import { Link } from 'react-router';
+import React, { PropTypes } from 'react';
 import FormContent from './Components/FormContentComponent';
 
-export default class registrationForm extends Component {
-  render() {
-    const { handleSubmit, submitting, register, step } = this.props;
-    return (
-      <div className="parentLogin">
-        <form className="childLogin form" onSubmit={handleSubmit(register)}>
-          <FormContent {...this.props} />
-        </form>
-      </div>
-    )
-  }
-}
+const registrationForm = () => {
+  const { handleSubmit, register } = this.props;
+  return (
+    <div className="parentLogin">
+      <form className="childLogin form" onSubmit={handleSubmit(register)}>
+        <FormContent {...this.props} />
+      </form>
+    </div>
+  );
+};
 
 registrationForm.propTypes = {
   fields: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired
-}
+  submitting: PropTypes.bool.isRequired,
+  register: PropTypes.func.isRequired,
+};
+
+export default registrationForm;

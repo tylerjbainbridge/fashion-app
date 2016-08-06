@@ -4,22 +4,18 @@ import { logoutUser, clickLogin } from '../User/UserActions';
 
 require('./NavBarStyles/style.scss');
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
   return {
-    username: state.user.get('username')
-  }
-};
+    username: state.user.get('username'),
+  };
+}
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
   return {
-    logout: () => {
-      return dispatch(logoutUser());
-    },
-    clickLogin: (redirect)=> {
-      return dispatch(clickLogin(redirect))
-    }
-  }
-};
+    logout: () => dispatch(logoutUser()),
+    clickLogin: (redirect) => dispatch(clickLogin(redirect)),
+  };
+}
 
 const NavBarContainer = connect(
   mapStateToProps,

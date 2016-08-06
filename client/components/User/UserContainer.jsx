@@ -1,22 +1,20 @@
 import { connect } from 'react-redux';
-import { getLoggedUser } from './UserActions';
+import { getLoggedUser, getUserProfile } from './UserActions';
 import User from './UserComponent';
 
-const mapStateToProps = (state, { params }) => {
+function mapStateToProps(state, { params }) {
   return {
     username: state.user.get('username'),
     profile: state.profile,
-    params
-  }
-};
+    params,
+  };
+}
 
-const mapDispatchToProps = dispatch => {
+function mapDispatchToProps(dispatch) {
   return {
-    getProfile: (username) => {
-      dispatch(getUserProfile(username));
-    }
-  }
-};
+    getProfile: (username) => dispatch(getUserProfile(username)),
+  };
+}
 
 const userCont = connect(
   mapStateToProps,

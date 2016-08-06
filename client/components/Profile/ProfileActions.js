@@ -1,6 +1,5 @@
 import request from 'superagent';
-import { push } from 'react-router-redux';
-
+// import { push } from 'react-router-redux';
 
 export function setProfile(user) {
   return {

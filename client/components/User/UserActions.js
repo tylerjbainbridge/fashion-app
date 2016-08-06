@@ -43,7 +43,6 @@ export function logoutUser() {
     request.get('/user/logout')
       .set('Content-Type', 'application/json')
       .then(() => {
-        console.log('hello');
         dispatch(logoutUserState());
         dispatch(push('/'));
       })

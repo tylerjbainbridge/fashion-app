@@ -1,14 +1,14 @@
-import { Map, fromJS } from 'immutable';
+import { Map } from 'immutable';
 
 const initialImageState = new Map({
   image: null,
   crop: {
     width: 100,
-    aspect: 1/1,
-  }
+    aspect: 1,
+  },
 });
 
-export const image = (state = initialImageState, action) => {
+const image = (state = initialImageState, action) => {
   switch (action.type) {
     case 'UPDATE_IMAGE':
       return state.update('image', () => action.image);
@@ -23,4 +23,4 @@ export const image = (state = initialImageState, action) => {
   }
 };
 
-// export default user;
+export default image;

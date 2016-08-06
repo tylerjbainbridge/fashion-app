@@ -1,5 +1,5 @@
 import request from 'superagent';
-import { push } from 'react-router-redux';
+// import { push } from 'react-router-redux';
 
 export function updateImage(image) {
   return {
@@ -31,9 +31,10 @@ export function resetForm() {
   return (dispatch) => {
     dispatch(deleteImage());
     dispatch(resetCrop());
-  }
+  };
 }
 
+//  TODO: add disptch here.
 export function attemptUploadProPic(form) {
   return (dispatch) =>
     new Promise((resolve, reject) => {

@@ -1,33 +1,32 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React, { PropTypes } from 'react';
 import NavLoggedIn from './NavLoggedIn';
 import NavNotLoggedIn from './NavNotLoggedIn';
 // import Search from '../Search/SearchComponent';
 
 
-class NavBar extends Component {
-   constructor(props) {
-     super(props);
-   };
-
-   render() {
-     if (this.props.username) {
-       return (
-         <NavLoggedIn
-           username={this.props.username}
-           onClick={this.props.logout}
-         />
-       )
-     } else {
-       return (
-         <NavNotLoggedIn
-           onClick={this.props.clickLogin}
-           url={this.props.url}
-         />
-       )
-     }
-   };
+function NavBar(props) {
+  const { username, logout, clickLogin, url } = props;
+  if (username) {
+    return (
+      <NavLoggedIn
+        username={username}
+        onClick={logout}
+      />
+   );
+  }
+  return (
+    <NavNotLoggedIn
+      onClick={clickLogin}
+      url={url}
+    />
+  );
 }
 
+NavBar.propTypes = {
+  username: PropTypes.string,
+  logout: PropTypes.func.isRequired,
+  clickLogin: PropTypes.func.isRequired,
+  url: PropTypes.string,
+};
 
 export default NavBar;
