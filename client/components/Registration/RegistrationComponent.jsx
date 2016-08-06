@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import FormContent from './Components/FormContentComponent';
 
-const registrationForm = () => {
-  const { handleSubmit, register } = this.props;
+const registrationForm = (props) => {
+  const { handleSubmit, register } = props;
   return (
     <div className="parentLogin">
       <form className="childLogin form" onSubmit={handleSubmit(register)}>
-        <FormContent {...this.props} />
+        <FormContent {...props} />
       </form>
     </div>
   );

@@ -7,7 +7,7 @@ function mapStateToProps(state, { params }) {
     username: state.user.get('username'),
     error: state.profile.get('error'),
     user: state.profile.get('user'),
-    yourProfile: (state.user.get('username') === params.username),
+    yourProfile: (state.user.get('username') === state.profile.get('user').username),
     params,
   };
 }

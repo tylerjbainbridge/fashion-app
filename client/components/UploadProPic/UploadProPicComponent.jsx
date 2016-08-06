@@ -78,9 +78,9 @@ class UploadProfilePicture extends Component {
 }
 
 UploadProfilePicture.propTypes = {
-  image: PropTypes.object,
-  fields: PropTypes.func.isRequired,
-  submitting: PropTypes.func.isRequired,
+  image: PropTypes.string,
+  fields: PropTypes.object.isRequired,
+  submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   upload: PropTypes.func.isRequired,
   crop: PropTypes.object.isRequired,

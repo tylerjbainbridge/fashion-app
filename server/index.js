@@ -26,13 +26,6 @@ const {
 const DB_URL = `mongodb://${DB_HOST}/${DB_NAME}`;
 mongoose.connect(DB_URL);
 
-//  Passport config
-passport.use(new Strategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -1,13 +1,14 @@
 import React, { PropTypes } from 'react';
 
-const UserInfo = () => {
-  const { username, firstName, lastName } = this.props.user;
+const UserInfo = (props) => {
+  const { username, firstName, lastName } = props.user;
+  const { yourProfile } = props;
   return (
     <div className="UserInfoContainer">
       <div className="UserInfo">
         <div className="profileUserName"> { username } </div>
         <div className="profileName">{ lastName }, { firstName }</div>
-        <span>{this.props.yourProfile ? <p>you</p> : <p>not you</p>}</span>
+        <span>{ yourProfile ? <p>you</p> : <p>not you</p> }</span>
       </div>
     </div>
   );
@@ -15,6 +16,7 @@ const UserInfo = () => {
 
 UserInfo.propTypes = {
   user: PropTypes.object.isRequired,
+  yourProfile: PropTypes.bool.isRequired,
 };
 
 export default UserInfo;

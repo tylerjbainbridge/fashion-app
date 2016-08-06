@@ -12,15 +12,19 @@ export function loginUser({ username, _id }) {
 }
 
 export function getLoggedUser() {
-  return (dispatch) => {
-    request.get('/user/getUser')
-      .set('Content-Type', 'application/json')
-      .then(res => {
-        if (res.body) {
-          dispatch(loginUser(res.body));
-        }
-      });
-  };
+  return (dispatch) =>
+    new Promise((resolve, reject) => {
+      request.get('/user/getUser')
+        .set('Content-Type', 'application/json')
+        .then(res => {
+          if (res.body) {
+            dispatch(loginUser(res.body));
+            resolve();
+          } else {
+            reject();
+          }
+        });
+    });
 }
 
 

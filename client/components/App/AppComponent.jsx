@@ -4,8 +4,8 @@ import NavBar from '../NavBar/NavBarContainer';
 
 export default class App extends Component {
 
-  componentWillMount() {
-    if (this.props.userid) {
+  componentDidMount() {
+    if (!this.props.userid) {
       this.props.getLoggedUser();
     }
   }
@@ -44,7 +44,7 @@ export default class App extends Component {
           <div className="titleFont">Styl</div>
         </Row>
         <Row className="show-grid">
-          {this.props.children}
+          { this.props.children }
         </Row>
       </Grid>
     );
@@ -62,9 +62,9 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.isHome() && this.props.userid) {
+    if (this.isHome() && !this.props.userid) {
       return this.displayHomePage();
-    } else if (this.props.userid) {
+    } else if (!this.props.userid) {
       return this.displayNotLoggedIn();
     }
     return this.displayLoggedIn();

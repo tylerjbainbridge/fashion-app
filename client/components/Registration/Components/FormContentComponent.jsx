@@ -1,76 +1,76 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import Input from '../../Forms/Input';
 
-export default class StepOne extends Component {
-  constructor(props) {
-    super(props);
-  }
+const RegistrationFormContents = (props) => {
+  const {
+    fields: {
+      username,
+      firstName,
+      lastName,
+      password,
+      confirmPassword,
+      email,
+     },
+     submitting,
+   } = props;
+  return (
+    <div>
+      <Input
+        type="text"
+        placeHolder="Enter Username"
+        reduxFormProp={username}
+      />
 
-  render() {
-    const { fields: { username, firstName, lastName, password, confirmPassword, email }, asyncValidating, submitting, nextStep } = this.props;
-    return (
-      <div>
-        <div>
-          <div>
-            <input type="text" placeholder="Username" {...username}/>
-            {asyncValidating === 'username' && <i /* spinning cog *//>}
-          </div>
-          <label className='logErr'>{username.touched && username.error && <div>{username.error}</div>}</label>
-        </div>
+      <Input
+        type="text"
+        placeHolder="Enter First Name"
+        reduxFormProp={firstName}
+      />
 
-        <div>
-          <div>
-            <input type="text" placeholder="First Name" {...firstName}/>
-          </div>
-          <label className='logErr'>{firstName.touched && firstName.error && <div>{firstName.error}</div>}</label>
-        </div>
+      <Input
+        type="text"
+        placeHolder="Enter Last Name"
+        reduxFormProp={lastName}
+      />
 
-        <div>
-          <div>
-            <input type="text" placeholder="Last Name" {...lastName}/>
-          </div>
-          <label className='logErr'>{lastName.touched && lastName.error && <div>{lastName.error}</div>}</label>
-          <label className='regErr'>{confirmPassword.touched && confirmPassword.error && <div>{confirmPassword.error}</div>}</label>
-        </div>
+      <Input
+        type="text"
+        placeHolder="Enter Email"
+        reduxFormProp={email}
+      />
 
-        <div>
-          <div>
-            <input type="text" placeholder="Email" {...email}/>
-          </div>
-          <label className='logErr'>{email.touched && email.error && <div>{email.error}</div>}</label>
-        </div>
+      <Input
+        type="password"
+        placeHolder="Enter Password"
+        reduxFormProp={password}
+      />
 
-        <div>
-          <div>
-            <input type="password" placeholder="Password" {...password}/>
-          </div>
-          <label className='logErr'>{password.touched && password.error && <div>{password.error}</div>}</label>
-        </div>
+      <Input
+        type="password"
+        placeHolder="Confirm Password"
+        reduxFormProp={confirmPassword}
+      />
 
-        <div>
-          <div>
-            <input type="password" placeholder="Confirm Password" {...confirmPassword}/>
-          </div>
-          <label className='logErr'>{confirmPassword.touched && confirmPassword.error && <div>{confirmPassword.error}</div>}</label>
-        </div>
+      <div className="formButtons">
+        <button type="submit" disabled={submitting}>
+          {submitting ? <i /> : <i />} Submit
+        </button>
 
-        <div className="formButtons">
-          <button type="submit" disabled={submitting}>
-            {submitting ? <i/> : <i/>} Submit
-          </button>
-
-          <button type="button">
-            <Link to='/'>
-              Cancel
-            </Link>
-          </button>
-        </div>
-        {/*<div className="formButtons">
-          <a onClick={() => nextStep()}>
-            Next
-          </a>
-        </div>*/}
+        <button type="button">
+          <Link to="/">
+            Cancel
+          </Link>
+        </button>
       </div>
-    )
-  }
-}
+    </div>
+  );
+};
+
+RegistrationFormContents.propTypes = {
+  fields: PropTypes.object.isRequired,
+  asyncValidating: PropTypes.bool,
+  submitting: PropTypes.bool.isRequired,
+};
+
+export default RegistrationFormContents;

@@ -10,9 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getLoggedUser: () => {
-      dispatch(getLoggedUser());
-    },
+    getLoggedUser: () => dispatch(getLoggedUser()),
   };
 }
 

@@ -6,7 +6,7 @@ const initialUserState = new Map({
   redirect: null,
 });
 
-const user = (state = initialUserState, action) => {
+function user(state = initialUserState, action) {
   switch (action.type) {
     case 'LOG_IN':
       return fromJS(action.user);
@@ -17,6 +17,6 @@ const user = (state = initialUserState, action) => {
     default:
       return state;
   }
-};
+}
 
 export default user;

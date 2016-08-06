@@ -6,7 +6,7 @@ function Input(props) {
     placeHolder,
     reduxFormProp,
   } = props;
-
+  // { asyncValidating === type && <i /* spinning cog *//> }
   return (
     <div>
       <div>
@@ -23,6 +23,7 @@ Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeHolder: PropTypes.string.isRequired,
   reduxFormProp: PropTypes.object.isRequired,
+  asyncValidating: PropTypes.func,
 };
 
 export default Input;

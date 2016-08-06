@@ -5,7 +5,7 @@ const initialUserState = new Map({
   error: null,
 });
 
-const profile = (state = initialUserState, action) => {
+function profile(state = initialUserState, action) {
   switch (action.type) {
     case 'SET_PROFILE':
       return state.update('user', () => action.user);
@@ -14,6 +14,6 @@ const profile = (state = initialUserState, action) => {
     default:
       return state;
   }
-};
+}
 
 export default profile;

@@ -8,10 +8,7 @@ class Profile extends Component {
   }
 
   componentWillMount() {
-    this.props.getProfile(this.username)
-      .then(() => {
-        this.isThisYourProfile();
-      });
+    this.props.getProfile(this.username);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -21,10 +18,7 @@ class Profile extends Component {
 
     if (diffPaths) {
       this.username = nextProps.params.username;
-      this.props.getProfile(nextProps.params.username)
-      .then(() => {
-        this.isThisYourProfile();
-      });
+      this.props.getProfile(nextProps.params.username);
     }
   }
 
@@ -34,14 +28,6 @@ class Profile extends Component {
         { this.props.error }
       </h1>
     );
-  }
-
-  isThisYourProfile() {
-    if (this.props.user.username === this.props.username) {
-      this.yourProfile = true;
-    } else {
-      this.yourProfile = false;
-    }
   }
 
   render() {
@@ -55,16 +41,17 @@ class Profile extends Component {
     return (
       <UserInfo
         user={this.props.user}
-        yourProfile={this.yourProfile}
+        yourProfile={this.props.yourProfile}
       />
    );
   }
 }
 
 Profile.propTypes = {
+  yourProfile: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   getProfile: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired,
+  error: PropTypes.string,
   user: PropTypes.object,
   username: PropTypes.string,
 };

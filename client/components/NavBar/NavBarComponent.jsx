@@ -3,9 +3,13 @@ import NavLoggedIn from './NavLoggedIn';
 import NavNotLoggedIn from './NavNotLoggedIn';
 // import Search from '../Search/SearchComponent';
 
-
-function NavBar(props) {
-  const { username, logout, clickLogin, url } = props;
+const NavBar = (props) => {
+  const {
+    username,
+    logout,
+    clickLogin,
+    url,
+  } = props;
   if (username) {
     return (
       <NavLoggedIn
@@ -20,7 +24,7 @@ function NavBar(props) {
       url={url}
     />
   );
-}
+};
 
 NavBar.propTypes = {
   username: PropTypes.string,
