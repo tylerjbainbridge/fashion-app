@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import ReactCrop from 'react-image-crop';
 
 class UploadProfilePicture extends Component {
+
   getDateUrl(file, imageChanged) {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -14,6 +15,7 @@ class UploadProfilePicture extends Component {
   }
 
   setCrop(cropChanged, newCrop) {
+    console.log(newCrop);
     cropChanged(newCrop);
   }
 
@@ -42,7 +44,11 @@ class UploadProfilePicture extends Component {
 
     return (
       <div className="parentLogin">
-        <form className="childLogin form" onSubmit={handleSubmit(upload.bind(null, crop))}>
+        <form
+          className="childLogin form"
+          encType="multipart/form-data"
+          onSubmit={handleSubmit(upload.bind(null, crop))}
+        >
           <div>
             { image ? this.cropImage() : <br /> }
             <div>

@@ -1,4 +1,6 @@
 import request from 'superagent';
+import FormData from 'form-data';
+
 // import { push } from 'react-router-redux';
 
 export function updateImage(image) {
@@ -36,14 +38,16 @@ export function resetForm() {
 
 //  TODO: add disptch here.
 export function attemptUploadProPic(form) {
+  const formData = new FormData();
+  formData.append('crop', JSON.stringify(form.crop));
+  formData.append('propic', form.propic);
   return (dispatch) =>
     new Promise((resolve, reject) => {
-      request.post('/user/update/proPic')
-        .set('Content-Type', 'application/json')
-        .send(form)
+      request.post('/user/update/propic')
+        .send(formData)
         .then(res => {
           console.log(res);
           resetForm();
-        })
+        });
     });
 }

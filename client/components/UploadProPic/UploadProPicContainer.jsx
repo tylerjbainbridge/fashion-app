@@ -19,16 +19,15 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const upload = (crop, form, dispatch) =>
-  new Promise((resolve, reject) => {
-    const newForm = Object.assign({}, form, {
-      crop,
-    });    // form.crop = crop;
-    dispatch(
-      attemptUploadProPic(newForm)
-    );
-  });
-
+const upload = (crop, form, dispatch) => {
+  const newForm = Object.assign({}, form, {
+    propic: form.propic[0],
+    crop,
+  });    // form.crop = crop;
+  return dispatch(
+    attemptUploadProPic(newForm)
+  );
+};
 
 const form = reduxForm({
   form: 'ProfilePicture',

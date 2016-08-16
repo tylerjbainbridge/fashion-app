@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import NavBar from '../NavBar/NavBarContainer';
 
-export default class App extends Component {
+class App extends Component {
 
   componentDidMount() {
     if (!this.props.userid) {
@@ -80,3 +80,5 @@ App.propTypes = {
   location: PropTypes.object.isRequired,
   children: PropTypes.object.isRequired,
 };
+
+export default App;

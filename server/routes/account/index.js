@@ -2,8 +2,8 @@ import express from 'express';
 import passport from 'passport';
 import { Strategy } from 'passport-local';
 import { Account } from '../../models';
-import AccountUpdateRouter from './crud/update';
-import AccountCreateRouter from './crud/create';
+import AccountUpdateRouter from './update';
+import AccountCreateRouter from './create';
 
 const router = express();
 
