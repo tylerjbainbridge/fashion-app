@@ -3,7 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import loginForm from './components/Login/LoginReducer';
 import user from './components/User/UserReducer';
-import propic from './components/ProPic/ProPicReducer';
+import propic from './components/Profile/ProPic/ProPicReducer';
 import profile from './components/Profile/ProfileReducer';
 import image from './components/Images/ImageReducer';
 

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import UserInfo from './Components/UserInfo';
-import ProPic from '../ProPic/ProPicContainer';
+import UserInfo from './UserInfo';
+import ProPic from './ProPic/ProPicContainer';
 
 class Profile extends Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class Profile extends Component {
   }
 
   componentWillMount() {
+    this.props.newPropic();
     this.props.getProfile(this.username);
   }
 
@@ -18,6 +19,7 @@ class Profile extends Component {
     const diffPaths = (nextPath !== currentPath);
 
     if (diffPaths) {
+      this.props.newPropic();
       this.username = nextProps.params.username;
       this.props.getProfile(nextProps.params.username);
     }
@@ -40,16 +42,22 @@ class Profile extends Component {
       );
     }
     return (
-      <div className="topProfileContainerParent">
-        <div className="topProfileContainer">
-          <ProPic
-            username={this.props.user.username}
-            imageURL={this.props.user.profilePicture.imageURL}
-          />
-          <UserInfo
-            user={this.props.user}
-            yourProfile={this.props.yourProfile}
-          />
+      <div className="Profile">
+        <div className="topProfileContainerParent">
+          <div className="topProfileContainer">
+            <ProPic
+              user={this.props.user}
+            />
+            <UserInfo
+              user={this.props.user}
+              yourProfile={this.props.yourProfile}
+            />
+          </div>
+        </div>
+        <div className="bottomProfileContainerParent">
+          <div className="bottomProfileContainer">
+            {this.props.children}
+          </div>
         </div>
       </div>
    );
@@ -60,9 +68,11 @@ Profile.propTypes = {
   yourProfile: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   getProfile: PropTypes.func.isRequired,
+  newPropic: PropTypes.func.isRequired,
   error: PropTypes.string,
   user: PropTypes.object,
   username: PropTypes.string,
+  children: PropTypes.object.isRequired,
 };
 
 export default Profile;

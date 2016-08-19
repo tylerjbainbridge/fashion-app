@@ -16,6 +16,8 @@ import Login from './components/Login/LoginContainer';
 import Home from './components/Home/HomeContainer';
 import UploadProPic from './components/UploadProPic/UploadProPicContainer';
 import NotFound from './components/NotFound/NotFoundComponent';
+import ProfileImages from './components/Profile/Images/ImagesComponent';
+import ProfileAbout from './components/Profile/About/AboutComponent';
 
 //  Styles.
 require('./styles/style.scss');
@@ -41,7 +43,10 @@ render((
         <IndexRoute component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Registration} />
-        <Route path="/u/:username" component={Profile} />
+        <Route path="/u/:username" component={Profile} >
+          <IndexRoute component={ProfileImages} />
+          <Route path="about" component={ProfileAbout} />
+        </Route>
         <Route path="/updateProfilePicture" component={UploadProPic} />
         <Router path="*" component={NotFound} />
       </Route>

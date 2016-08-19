@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react';
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 
 const ProPic = (props) => {
-  const { username, imageURL, imageLoaded, imageError, status } = props;
+  const { user: { username, profilePicture }, imageLoaded, imageError, status } = props;
   const alt = `${username}'s profile picture.'`;
-  const displayImage = (status === 'loading') ? 'none' : 'block';
+  const imageURL = (profilePicture ? profilePicture.imageURL : null);
+  const displayImage = (status === 'LOADING' || status === 'ERROR') ? 'none' : 'block';
+  const error = (status === 'ERROR' || !imageURL) ? 'block' : 'none';
   // const displaySpinner = (status === 'loaded') ? 'none' : 'block';
   return (
     <div className="ProfileProPicContainer">
@@ -16,6 +18,12 @@ const ProPic = (props) => {
         onError={imageError}
         alt={alt}
       />
+      <div
+        style={{ display: error }}
+        className="errorProPic"
+      >
+        {username[0].toUpperCase()}
+      </div>
     </div>
   );
 };
@@ -31,8 +39,11 @@ ProPic.propTypes = {
   imageLoaded: PropTypes.func.isRequired,
   imageError: PropTypes.func.isRequired,
   status: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  imageURL: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  // imageURL: PropTypes.oneOfType([
+  //   PropTypes.string,
+  //   PropTypes.null,
+  // ]),
 };
 
 export default ProPic;
