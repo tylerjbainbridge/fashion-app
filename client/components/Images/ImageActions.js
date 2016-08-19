@@ -1,6 +1,5 @@
 import request from 'superagent';
-import FormData from 'form-data';
-
+import { goToLoggedUsersProfile } from '../User/UserActions';
 // import { push } from 'react-router-redux';
 
 export function updateImage(image) {
@@ -29,6 +28,14 @@ export function resetCrop() {
   };
 }
 
+export function uploadError(error) {
+  console.log(error);
+  return {
+    type: 'UPLOAD_ERROR',
+    error,
+  };
+}
+
 export function resetForm() {
   return (dispatch) => {
     dispatch(deleteImage());
@@ -38,16 +45,21 @@ export function resetForm() {
 
 //  TODO: add disptch here.
 export function attemptUploadProPic(form) {
-  const formData = new FormData();
-  formData.append('crop', JSON.stringify(form.crop));
-  formData.append('propic', form.propic);
   return (dispatch) =>
     new Promise((resolve, reject) => {
       request.post('/user/update/propic')
-        .send(formData)
+        .send(form)
         .then(res => {
-          console.log(res);
-          resetForm();
+          if (!res.body.err) {
+            console.log(res.body);
+            dispatch(goToLoggedUsersProfile());
+            resetForm();
+          } else {
+            dispatch(uploadError(res.body.err));
+          }
+        })
+        .catch((err) => {
+          dispatch(uploadError(err));
         });
     });
 }

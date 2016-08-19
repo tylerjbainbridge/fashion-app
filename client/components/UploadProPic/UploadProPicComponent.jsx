@@ -1,33 +1,33 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import ReactCrop from 'react-image-crop';
+// import ReactCrop from 'react-image-crop';
 
 class UploadProfilePicture extends Component {
 
-  getDateUrl(file, imageChanged) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      if (reader.result) {
-        imageChanged(reader.result);
-      }
-    };
-  }
+  // getDateUrl(file, imageChanged) {
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onloadend = () => {
+  //     if (reader.result) {
+  //       imageChanged(reader.result);
+  //     }
+  //   };
+  // }
 
-  setCrop(cropChanged, newCrop) {
-    console.log(newCrop);
-    cropChanged(newCrop);
-  }
-
-  cropImage() {
-    return (
-      <ReactCrop
-        crop={this.props.crop}
-        src={this.props.image}
-        onComplete={this.setCrop.bind(null, this.props.cropChanged)}
-      />
- );
-  }
+ //  setCrop(cropChanged, newCrop) {
+ //    console.log(newCrop);
+ //    cropChanged(newCrop);
+ //  }
+ //
+ //  cropImage() {
+ //    return (
+ //      <ReactCrop
+ //        crop={this.props.crop}
+ //        src={this.props.image}
+ //        onComplete={this.setCrop.bind(null, this.props.cropChanged)}
+ //      />
+ // );
+ //  }
 
   render() {
     const {
@@ -39,7 +39,7 @@ class UploadProfilePicture extends Component {
       handleSubmit,
       upload,
       imageChanged,
-      crop,
+      serverError,
     } = this.props;
 
     return (
@@ -47,8 +47,13 @@ class UploadProfilePicture extends Component {
         <form
           className="childLogin form"
           encType="multipart/form-data"
-          onSubmit={handleSubmit(upload.bind(null, crop))}
+          onSubmit={
+            handleSubmit(upload)
+          }
         >
+        <label className="logErr">
+          {serverError && <div className="logErr">{serverError}</div>}
+        </label>
           <div>
             { image ? this.cropImage() : <br /> }
             <div>
@@ -59,7 +64,8 @@ class UploadProfilePicture extends Component {
                 value={null}
                 onChange={(e) => {
                   const file = e.target.files[0];
-                  this.getDateUrl(file, imageChanged);
+                  console.log(file);
+                  // this.getDateUrl(file, imageChanged);
                 }}
               />
             </div>
@@ -89,8 +95,8 @@ UploadProfilePicture.propTypes = {
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   upload: PropTypes.func.isRequired,
-  crop: PropTypes.object.isRequired,
   imageChanged: PropTypes.func.isRequired,
+  serverError: PropTypes.string,
 };
 
 export default UploadProfilePicture;

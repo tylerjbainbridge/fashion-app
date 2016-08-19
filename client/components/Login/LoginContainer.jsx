@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import _ from 'lodash';
 import { loginValidation } from './LoginValidation';
 import { attemptLogin } from './LoginActions';
 import Login from './LoginComponent';

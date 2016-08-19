@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import UserInfo from './Components/UserInfo';
+import ProPic from '../ProPic/ProPicContainer';
 
 class Profile extends Component {
   constructor(props) {
@@ -39,10 +40,18 @@ class Profile extends Component {
       );
     }
     return (
-      <UserInfo
-        user={this.props.user}
-        yourProfile={this.props.yourProfile}
-      />
+      <div className="topProfileContainerParent">
+        <div className="topProfileContainer">
+          <ProPic
+            username={this.props.user.username}
+            imageURL={this.props.user.profilePicture.imageURL}
+          />
+          <UserInfo
+            user={this.props.user}
+            yourProfile={this.props.yourProfile}
+          />
+        </div>
+      </div>
    );
   }
 }

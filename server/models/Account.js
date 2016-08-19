@@ -7,6 +7,10 @@ const Account = new Schema({
   firstName: String,
   lastName: String,
   email: String,
+  profilePicture: {
+    imageid: Schema.Types.ObjectId,
+    imageURL: String,
+  },
 });
 
 Account.plugin(passportLocalMongoose);

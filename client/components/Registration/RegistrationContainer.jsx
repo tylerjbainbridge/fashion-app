@@ -1,6 +1,4 @@
 import { reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-
 import { registrationValidation } from './RegistrationValidation';
 import { attemptRegistration, checkUniqueUsername } from './RegistrationActions';
 
@@ -16,12 +14,6 @@ export const fields = [
   'propic',
 ];
 
-function mapStateToProps(state) {
-  return {
-    step: state.user.get('step'),
-  };
-}
-
 const register = (form, dispatch) => {
   dispatch(
     attemptRegistration(form)
@@ -36,16 +28,11 @@ const checkUsername = (form, dispatch) =>
   });
 
 
-const form = reduxForm({
-  form: 'Register',
+export default reduxForm({
+  form: 'FormContent',
   fields,
   register,
-  mapStateToProps,
   asyncValidate: checkUsername,
   asyncBlurFields: ['username'],
   validate: registrationValidation,
 })(Registration);
-
-export default connect(
-  mapStateToProps
-)(form);

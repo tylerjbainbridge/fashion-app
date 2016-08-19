@@ -12,7 +12,7 @@ function Input(props) {
       <div>
         <input type={type} placeholder={placeHolder} {...reduxFormProp} />
       </div>
-      <label className="logErr" htmlFor={placeHolder}>
+      <label className="logErr" htmlFor={reduxFormProp}>
         {reduxFormProp.touched && reduxFormProp.error && <div>{reduxFormProp.error}</div>}
       </label>
     </div>

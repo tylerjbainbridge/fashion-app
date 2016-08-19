@@ -13,10 +13,9 @@ const upload = multer({
   dest: path.join(__dirname, '/uploads/'),
   storage,
 });
+const router = express();
 
 mongoose.promise = require('bluebird');
-
-const router = express();
 
 router.post('/propic', upload.single('propic'), (req, res) => {
   const newImage = new Image({});
@@ -45,16 +44,26 @@ router.post('/propic', upload.single('propic'), (req, res) => {
     const aws = new AWS(req.user.username, 'propic', newImage.id);
     return aws.upload(file, newImage.ext);
   })
-  .then((key, other) => {
-    console.log(key, other);
+  .then((key) => {
     newImage.key = key;
+    newImage.imageURL = `http://d2o0f6zllb2kj2.cloudfront.net/${key}`;
     return newImage.save();
+  })
+  .then(() => {
+    req.user.profilePicture = {
+      imageURL: newImage.imageURL,
+      imageid: newImage.id,
+    };
+    req.user.save((err) => {
+      if (err) throw err;
+      return;
+    });
   })
   .then(() => {
     res.send(newImage);
   })
   .catch((err) => {
-    res.status(500).send(err);
+    res.send({ err: err.toString() });
   });
 });
 

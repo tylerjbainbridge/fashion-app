@@ -1,33 +1,29 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import FormData from 'form-data';
 import UploadProPicComponent from './UploadProPicComponent';
-import { updateImage, updateCrop, attemptUploadProPic } from '../Images/ImageActions';
+import { updateImage, attemptUploadProPic } from '../Images/ImageActions';
 
 export const fields = ['propic'];
 
 function mapStateToProps(state) {
   return {
     image: state.image.get('image'),
-    crop: state.image.get('crop'),
+    serverError: state.image.get('error'),
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     imageChanged: (image) => dispatch(updateImage(image)),
-    cropChanged: (crop) => dispatch(updateCrop(crop)),
   };
 }
 
-const upload = (crop, form, dispatch) => {
-  const newForm = Object.assign({}, form, {
-    propic: form.propic[0],
-    crop,
-  });    // form.crop = crop;
-  return dispatch(
-    attemptUploadProPic(newForm)
-  );
-};
+function upload(form, dispatch) {
+  const formData = new FormData();
+  formData.append('propic', form.propic[0]);
+  dispatch(attemptUploadProPic(formData));
+}
 
 const form = reduxForm({
   form: 'ProfilePicture',

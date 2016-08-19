@@ -69,7 +69,6 @@ const RegistrationFormContents = (props) => {
 
 RegistrationFormContents.propTypes = {
   fields: PropTypes.object.isRequired,
-  asyncValidating: PropTypes.bool,
   submitting: PropTypes.bool.isRequired,
 };
 

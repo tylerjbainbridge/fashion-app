@@ -43,7 +43,7 @@ render((
         <Route path="/register" component={Registration} />
         <Route path="/u/:username" component={Profile} />
         <Route path="/updateProfilePicture" component={UploadProPic} />
-        <Router path="404" component={NotFound} />
+        <Router path="*" component={NotFound} />
       </Route>
     </Router>
   </Provider>

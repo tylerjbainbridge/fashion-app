@@ -18,6 +18,7 @@ registrationForm.propTypes = {
   resetForm: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   register: PropTypes.func.isRequired,
+  validate: PropTypes.func,
 };
 
 export default registrationForm;

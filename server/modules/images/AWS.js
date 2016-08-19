@@ -11,7 +11,7 @@ class AWS {
   }
 
   upload(buffer, ext) {
-    return Promise.try(() => {
+    return new Promise((resolve, reject) => {
       const { username, type, id } = this;
       this.key = `images/${username}/${type}/${id}.${ext}`;
       const s3 = new aws.S3();
@@ -22,10 +22,10 @@ class AWS {
         ContentType: 'image/jpeg',
         ACL: 'public-read',
       };
-      return s3.putObject(params).promise();
-    })
-    .then(() => Promise.resolve(this.key))
-    .catch((err) => Promise.reject(err));
+      return s3.putObject(params).promise()
+      .then(() => resolve(this.key))
+      .catch((err) => reject(err));
+    });
   }
 }
 

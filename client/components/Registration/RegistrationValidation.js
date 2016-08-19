@@ -3,7 +3,7 @@ import { isAlphanumeric, isAlpha, isLength, isEmail } from 'validator';
 const registrationValidation = (form) => {
   const { username, firstName, lastName, password, confirmPassword, email } = form;
   const errors = {};
-
+  console.log(form);
   if (!username) {
     errors.username = 'Required';
   } else if (!isLength(username, { min: 0, max: 20 })) {
@@ -44,7 +44,6 @@ const registrationValidation = (form) => {
       errors.confirmPassword = 'Passwords do not match.';
     }
   }
-
   return errors;
 };
 

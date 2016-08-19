@@ -1,5 +1,4 @@
 import sharp from 'sharp';
-import fs from 'fs';
 import Promise from 'bluebird';
 // import _ from 'lodash';
 
@@ -11,16 +10,13 @@ class Modify {
   }
 
   cropToSquare() {
-    return Promise.try(() => {
+    return new Promise((resolve, reject) => {
       sharp(this.originalBuffer)
         .resize(200, 200)
         .crop(sharp.gravity.center)
-        .toBuffer((bufferError, outputBuffer, info) => {
-          if (bufferError) return Promise.reject(bufferError);
-          return fs.writeFile('output.jpg', outputBuffer, (writeErr) => {
-            if (writeErr) return Promise.reject(writeErr);
-            return Promise.resolve(outputBuffer, info);
-          });
+        .toBuffer((bufferError, outputBuffer) => {
+          if (bufferError) return reject(bufferError);
+          return resolve(outputBuffer);
         });
     });
   }

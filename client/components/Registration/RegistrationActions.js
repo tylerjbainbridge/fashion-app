@@ -1,19 +1,6 @@
 import request from 'superagent';
 import { push } from 'react-router-redux';
 
-export function successfulRegistration() {
-  return {
-    type: 'SUCCESSFUL_REGISTRATION',
-  };
-}
-
-export function errorRegistration(message) {
-  return {
-    type: 'ERROR_REGISTRATION',
-    message,
-  };
-}
-
 export function loginUser({ username, _id }) {
   return {
     type: 'LOG_IN',
@@ -26,7 +13,7 @@ export function loginUser({ username, _id }) {
 
 export function attemptRegistration(form) {
   return (dispatch) =>
-    request.post('/user/create/account')
+    request.post('/user/register')
       .set('Content-Type', 'application/json')
       .send(form)
       .then(res => {
@@ -34,11 +21,6 @@ export function attemptRegistration(form) {
         //  console.log('successful registration ', res.body.username);
         dispatch(loginUser(res.body));
         dispatch(push('/updateProfilePicture'));
-      })
-      .catch(res => {
-        dispatch(errorRegistration(res.err));
-        //  TODO: turn into action.
-        //  console.log(`ERR: ${res.err}`);
       });
 }
 
@@ -55,8 +37,8 @@ export function checkUniqueUsername(username) {
             resolve();
           }
         })
-        .catch(() => {
-          reject();
+        .catch((err) => {
+          reject(err);
           //  TODO: turn into action.
           //  console.log('err: ', res.err);
         });

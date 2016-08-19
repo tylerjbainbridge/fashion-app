@@ -11,20 +11,26 @@ export function loginUser({ username, _id }) {
   };
 }
 
+export function goToLoggedUsersProfile() {
+  return (dispatch) =>
+    request.get('/user/getUser')
+      .set('Content-Type', 'application/json')
+      .then(res => {
+        if (res.body) {
+          dispatch(push(`/u/${res.body.username}`));
+        }
+      });
+}
+
 export function getLoggedUser() {
   return (dispatch) =>
-    new Promise((resolve, reject) => {
-      request.get('/user/getUser')
-        .set('Content-Type', 'application/json')
-        .then(res => {
-          if (res.body) {
-            dispatch(loginUser(res.body));
-            resolve();
-          } else {
-            reject();
-          }
-        });
-    });
+    request.get('/user/getUser')
+      .set('Content-Type', 'application/json')
+      .then(res => {
+        if (res.body) {
+          dispatch(loginUser(res.body));
+        }
+      });
 }
 
 
