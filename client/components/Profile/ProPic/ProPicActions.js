@@ -21,3 +21,15 @@ export function clear() {
     type: 'CLEAR',
   };
 }
+
+export function openModal() {
+  return {
+    type: 'OPEN_UPLOAD_PROPIC_MODAL',
+  };
+}
+
+export function closeModal() {
+  return {
+    type: 'CLOSE_UPLOAD_PROPIC_MODAL',
+  };
+}

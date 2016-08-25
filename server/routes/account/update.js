@@ -8,6 +8,8 @@ import Image from '../../models/Image';
 import Modify from '../../modules/images/Modify';
 import AWS from '../../modules/images/AWS';
 
+mongoose.promise = require('bluebird');
+
 const storage = multer.memoryStorage();
 const upload = multer({
   dest: path.join(__dirname, '/uploads/'),
@@ -15,18 +17,29 @@ const upload = multer({
 });
 const router = express();
 
-mongoose.promise = require('bluebird');
-
 router.post('/propic', upload.single('propic'), (req, res) => {
   const newImage = new Image({});
   Promise.try(() => {
-    if (req.user) {
-      newImage.userid = req.user.id;
-      newImage.username = req.user.username;
-      newImage.type = 'propic';
-    } else {
+    if (!req.user) {
       throw new Error('must be logged in');
     }
+    const id = req.user.profilePicture.imageid;
+    return Image.findById(id);
+  }).then((img) => {
+    if (img) {
+      const aws = new AWS();
+      const { key } = img;
+      img.remove((err) => {
+        if (err) throw err;
+        else return aws.delete(key);
+      });
+    }
+    return null;
+  })
+  .then(() => {
+    newImage.userid = req.user.id;
+    newImage.username = req.user.username;
+    newImage.type = 'propic';
   })
   .then(() => {
     const type = fileType(req.file.buffer);

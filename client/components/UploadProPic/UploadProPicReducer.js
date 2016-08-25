@@ -1,11 +1,11 @@
 import { Map } from 'immutable';
 
-const initialImageState = new Map({
+const initialUploadProPicState = new Map({
   image: null,
   error: null,
 });
 
-const image = (state = initialImageState, action) => {
+const image = (state = initialUploadProPicState, action) => {
   switch (action.type) {
     case 'UPDATE_IMAGE':
       return state.update('image', () => action.image);
@@ -13,8 +13,8 @@ const image = (state = initialImageState, action) => {
       return state.update('image', () => null);
     case 'UPLOAD_ERROR':
       return state.update('error', () => action.error);
-    case 'RESET_ERROR':
-      return state.update('error', () => action.error);
+    case 'RESET_UPLOAD_PROPIC':
+      return initialUploadProPicState;
     default:
       return state;
   }

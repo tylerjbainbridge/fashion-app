@@ -35,9 +35,9 @@ export function uploadError(error) {
   };
 }
 
-export function resetServerError() {
+export function resetUploadPage() {
   return {
-    type: 'RESET_ERROR',
+    type: 'RESET_UPLOAD_PROPIC',
   };
 }
 

@@ -1,4 +1,5 @@
 import request from 'superagent';
+import { closeModal } from './ProPic/ProPicActions';
 // import { push } from 'react-router-redux';
 
 export function setProfile(user) {
@@ -31,6 +32,7 @@ export function getUserProfile(username) {
           if (res.body) {
             dispatch(setProfile(res.body));
             dispatch(foundProfile());
+            dispatch(closeModal());
             resolve();
           } else {
             dispatch(setProfile({

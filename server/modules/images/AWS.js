@@ -27,6 +27,19 @@ class AWS {
       .catch((err) => reject(err));
     });
   }
+
+  delete(key) {
+    return new Promise((resolve, reject) => {
+      const s3 = new aws.S3();
+      const params = {
+        Bucket: process.env.BUCKET_NAME,
+        Key: key,
+      };
+      return s3.deleteObject(params).promise()
+      .then(() => resolve(this.key))
+      .catch((err) => reject(err));
+    });
+  }
 }
 
 export default AWS;

@@ -6,18 +6,24 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.username = this.props.params.username;
+    this.props.closeModal();
   }
 
   componentWillMount() {
     this.props.newPropic();
     this.props.getProfile(this.username);
+    this.props.closeModal();
+  }
+
+  componentDidMount() {
+    this.props.closeModal();
   }
 
   componentWillReceiveProps(nextProps) {
     const nextPath = nextProps.params.username;
     const currentPath = this.props.params.username;
     const diffPaths = (nextPath !== currentPath);
-
+    this.props.closeModal();
     if (diffPaths) {
       this.props.newPropic();
       this.username = nextProps.params.username;
@@ -47,6 +53,7 @@ class Profile extends Component {
           <div className="topProfileContainer">
             <ProPic
               user={this.props.user}
+              you={this.props.yourProfile}
             />
             <UserInfo
               user={this.props.user}
@@ -73,6 +80,7 @@ Profile.propTypes = {
   user: PropTypes.object,
   username: PropTypes.string,
   children: PropTypes.object.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default Profile;

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getUserProfile } from './ProfileActions';
-import { clear } from './ProPic/ProPicActions';
+import { clear, closeModal } from './ProPic/ProPicActions';
 import Profile from './ProfileComponent';
 
 function mapStateToProps(state, { params }) {
@@ -16,7 +16,8 @@ function mapStateToProps(state, { params }) {
 function mapDispatchToProps(dispatch) {
   return {
     getProfile: (username) => dispatch(getUserProfile(username)),
-    newPropic: () => dispatch(clear),
+    newPropic: () => dispatch(clear()),
+    closeModal: () => dispatch(closeModal()),
   };
 }
 
