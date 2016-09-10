@@ -12,17 +12,26 @@ class NavLoggedIn extends Component {
       <div className="Nav">
         <div className="NavLeft">
           <Link to="/">
-           Styl
+           STYL
           </Link>
         </div>
-        <div className="NavRight">
-          <Link to={`/u/${this.props.username}`} className="NavBtn">
-            { this.props.username.toUpperCase() }
-          </Link>
-          <button onClick={() => this.handleClick()} className="NavBtn">
-            LOGOUT
-          </button>
-        </div>
+        <ul className="NavRight">
+          <li>
+            <Link to={`/u/${this.props.username}`} className="NavBtn">
+              { this.props.username.toUpperCase() }
+            </Link>
+          </li>
+          <li>
+            <Link to="/upload" className="NavBtn">
+              UPLOAD
+            </Link>
+          </li>
+          <li>
+            <a onClick={() => this.handleClick()} className="NavBtn">
+              LOGOUT
+            </a>
+          </li>
+        </ul>
       </div>
    );
   }

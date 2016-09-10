@@ -79,6 +79,7 @@ class UploadProfilePicture extends Component {
                 </label>
               </div>
             :
+            <div>
               <PreviewImage image={image} />
               <div className="formButtons formButtonsCont">
                 <div className="innerFormButtons">
@@ -90,6 +91,7 @@ class UploadProfilePicture extends Component {
                   </button>
                 </div>
               </div>
+            </div>
              }
           </form>
       </div>
