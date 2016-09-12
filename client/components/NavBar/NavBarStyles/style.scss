@@ -1,0 +1,80 @@
+@import '../../../styles/colors';
+@import '../../../styles/fonts';
+
+$nav-padding: 100px;
+$nav-top-padding: 50px;
+
+.Nav {
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  float:left;
+  margin-right: 30px;
+  padding-left: $nav-padding;
+  // background-color: $accent-color;
+  // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+ul.NavRight {
+  //vertical align
+  padding-left: 0px;
+  list-style-type: none;
+  display: inline;
+  height: 100px;
+  li {
+    padding-bottom: 10px;
+  }
+}
+
+a {
+   outline: 0;
+   &:hover{
+     cursor: pointer;
+   }
+}
+
+.NavLeft {
+  //vertical align
+  font-size: 40px;
+  letter-spacing: 10px;
+  padding-bottom: 30px;
+
+  a {
+    // font-family: $title-font;
+    color: $title-color;
+    text-decoration: none;
+  }
+}
+
+.NavBtn {
+  //padding-left: 30px;
+  font-family: $body-font;
+  font-size:30px;
+  font-weight: bold;
+}
+
+span.NavBtn {
+  color: $accent-color;
+}
+
+button.NavBtn {
+  background-color: white;
+  border: none;
+  text-decoration: none;
+  color: $accent-color;
+  transition: 0.5s ease;
+  &:hover{
+    transition: 0.5s ease;
+    border-bottom: solid 1px $accent-color;
+  }
+}
+
+a.NavBtn {
+  text-decoration: none;
+  color: $accent-color;
+  transition: 0.5s ease;
+  &:hover{
+    transition: 0.5s ease;
+    border-bottom: solid 1px $accent-color;
+  }
+}

@@ -1,21 +1,23 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { List, Map, fromJS } from 'immutable';
-import {reducer as formReducer} from 'redux-form';
-
-// import { user } from './user';
-import { loginForm } from './Login/LoginReducer';
-import { registrationForm } from './Registration/RegistrationReducer';
-import { user } from './User/UserReducer';
-import { profile } from './Profile/ProfileReducer';
-
+import { reducer as formReducer } from 'redux-form';
+import loginForm from './components/Login/LoginReducer';
+import user from './components/User/UserReducer';
+import propic from './components/Profile/ProPic/ProPicReducer';
+import uploadProPic from './components/UploadProPic/UploadProPicReducer';
+import previewProPic from './components/UploadProPic/PreviewProPicReducer';
+import profile from './components/Profile/ProfileReducer';
+import image from './components/Images/ImageReducer';
 
 
 export default combineReducers({
-    loginForm,
-    registrationForm,
-    user,
-    profile,
-    routing: routerReducer,
-    form: formReducer
+  loginForm,
+  user,
+  image,
+  propic,
+  uploadProPic,
+  previewProPic,
+  profile,
+  routing: routerReducer,
+  form: formReducer,
 });

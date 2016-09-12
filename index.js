@@ -1,12 +1,11 @@
-
-'use strict';
-
 require('babel/register')({});
+require('dotenv').config();
 
-var server = require('./server');
+const server = require('./server/');
 
-const PORT = process.env.PORT || 3000;
+// const SERVER_HOST = process.env.SERVER_HOST;
+const SERVER_PORT = process.env.SERVER_PORT;
 
-server.listen(PORT, function () {
-  console.log('Server listening on', PORT);
-});
+server.listen(SERVER_PORT, () =>
+  console.log('Server listening on', SERVER_PORT)
+);

@@ -1,3 +1,9 @@
 ./node_modules
 /node_modules
 node_modules
+todo.md
+./todo.md
+/todo.md
+/.env
+.env
+./.env

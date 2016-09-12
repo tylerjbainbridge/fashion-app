@@ -1,0 +1,300 @@
+@import 'colors';
+@import 'fonts';
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+html, body {
+  margin:0;
+  padding:0;
+}
+
+div.titleFont{
+  color: $title-color;
+  // font-family: $title-font;
+  font-weight: normal;
+  font-size: 200px;
+  text-align: center;
+}
+
+h3 {
+  font-family: $body-font;
+  font-weight: normal;
+  color: $accent-color;
+  text-align: center;
+  font-size:32px;
+}
+
+.header {
+  display: block;
+}
+
+.parentLogin {
+  width: 100%;
+  height: 200px;
+}
+
+a {
+   outline: 0;
+}
+
+form.childLogin {
+  padding-top: 30px;
+  width: 200px;
+  margin: 0 auto;
+  div {
+    padding-bottom: 10px;
+    label {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  label.logErr{
+    color: $title-color;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  input {
+    margin: auto;
+    display: block;
+    width: 200px;
+    text-align: center;
+    padding: 5px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 0.5px solid $accent-color !important;
+    background: none;
+  }
+}
+
+// #loginBtnCont{
+//   float: none;
+//   margin: 0 auto;
+//   display: inline;
+//   width: 50%;
+// }
+//
+// #cancelBtnCont{
+//   margin: 0 auto;
+//   float: none;
+//   display: inline;
+//   width: 50%;
+// }
+
+
+button:focus {
+  outline:0 !important;
+}
+
+button::-moz-focus-inner {
+  border:0 !important;
+}
+
+
+.formButtons {
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  display: inline;
+  button {
+    background-color: transparent;
+    border: solid 1px;
+    transition: 0.5s ease;
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+    a{
+      text-decoration: none;
+      color: currentColor;
+    }
+    &:hover{
+      transition: 0.5s ease;
+      cursor: pointer;
+    }
+  }
+}
+
+.previewAndSubmit {
+  width: 100%;
+}
+
+.formButtonsCont {
+  width: 100%;
+  height: 40px;
+}
+
+.innerFormButtons {
+  padding: 20px;
+  width: 165px;
+  margin: auto;
+}
+
+
+.UploadProPicPreview {
+  width: 30vw;
+  float: left;
+  img {
+    max-width: 100%;
+  }
+}
+
+// .content {
+//   padding-top: 50px;
+// }
+
+
+.topProfileContainerParent {
+  width: 100%;
+  height: 300px;
+}
+
+.bottomProfileContainerParent {
+  width: 100%;
+  height: 500px;
+}
+
+.bottomProfileContainer {
+  width: 700px;
+  margin: auto;
+}
+
+.cont {
+  width: 100%;
+  height: 600px;
+}
+
+.ProfileImages {
+  margin: auto;
+  width: 300px;
+  text-align: center;
+}
+
+.topProfileContainer{
+float:left;
+  width: 440px;
+  padding-bottom: 25px;
+}
+
+.ProfileProPicContainer {
+  padding: 10px;
+  float:left;
+  display:inline;
+  width: 200px;
+  height: 200px;
+  &:hover{
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+
+  img {
+    width: 200px;
+  }
+}
+
+span.closeModal {
+  &:hover{
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+}
+
+.errorProPic {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.UserInfoContainer {
+  padding: 10px;
+  float:left;
+  display:inline;
+  width: 200px;
+  height: 200px;
+  text-align: left;
+}
+
+div.profileUserName {
+  font-size: 50px;
+  padding-bottom: 30px;
+}
+
+div.profileName {
+  color: $title-color;
+}
+
+.parentLogin {
+  width: 100%;
+  height: 200px;
+}
+
+.childLogin {
+  width: 155px;
+  margin: auto;
+
+  form {
+    padding-top: 30px;
+    margin: auto;
+    background-color: black;
+  }
+
+  div {
+    padding-bottom: 10px;
+    label {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  label.logErr{
+    color: $title-color;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  input {
+    text-align: center;
+    padding: 5px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 0.5px solid $accent-color !important;
+    background: none;
+  }
+}
+
+
+//homepage
+.childHome {
+  width: 50px;
+  margin: auto;
+}
+
+.homeLink {
+  text-align: center;
+  padding-top: 30px;
+
+  a {
+    text-decoration: none;
+    color: $accent-color;
+  }
+}
