@@ -8,7 +8,7 @@ import uploadProPic from './components/UploadProPic/UploadProPicReducer';
 import previewProPic from './components/UploadProPic/PreviewProPicReducer';
 import profile from './components/Profile/ProfileReducer';
 import image from './components/Images/ImageReducer';
-
+import uploadFit from './components/UploadFit/UploadFitReducer';
 
 export default combineReducers({
   loginForm,
@@ -18,6 +18,7 @@ export default combineReducers({
   uploadProPic,
   previewProPic,
   profile,
+  uploadFit,
   routing: routerReducer,
   form: formReducer,
 });
