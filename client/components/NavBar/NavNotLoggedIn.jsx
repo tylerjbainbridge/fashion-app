@@ -15,20 +15,18 @@ class NavNotLoggedIn extends Component {
            STYL
           </Link>
         </div>
-        <div className="NavRight">
-          <ul>
-            <li>
-              <a onClick={() => this.handleClick(this.props.url)} className="NavBtn">
-               LOGIN
-              </a>
-            </li>
-            <li>
-              <Link to="/register" className="NavBtn">
-                CREATE
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <ul className="NavRight">
+          <li>
+            <a onClick={() => this.handleClick(this.props.url)} className="NavBtn">
+             LOGIN
+            </a>
+          </li>
+          <li>
+            <Link to="/register" className="NavBtn">
+              CREATE
+            </Link>
+          </li>
+        </ul>
       </div>
    );
   }

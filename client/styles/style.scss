@@ -146,12 +146,16 @@ button::-moz-focus-inner {
 
 
 .UploadProPicPreview {
-  margin: auto;
-  width: 300px;
+  width: 30vw;
+  float: left;
   img {
-    width: 300px;
+    max-width: 100%;
   }
 }
+
+// .content {
+//   padding-top: 50px;
+// }
 
 
 .topProfileContainerParent {
@@ -181,7 +185,7 @@ button::-moz-focus-inner {
 }
 
 .topProfileContainer{
-  margin: auto;
+float:left;
   width: 440px;
   padding-bottom: 25px;
 }
@@ -195,6 +199,10 @@ button::-moz-focus-inner {
   &:hover{
     transition: 0.5s ease;
     cursor: pointer;
+  }
+
+  img {
+    width: 200px;
   }
 }
 

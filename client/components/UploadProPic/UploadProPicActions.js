@@ -10,6 +10,7 @@ export function updateImage(image) {
 }
 
 export function updateCrop(crop) {
+  console.log(crop);
   return {
     type: 'UPDATE_CROP',
     crop,
@@ -49,11 +50,11 @@ export function resetForm() {
 }
 
 //  TODO: add disptch here.
-export function attemptUploadProPic(form) {
+export function attemptUploadProPic(form, crop) {
   return (dispatch) =>
     new Promise((resolve, reject) => {
       request.post('/user/update/propic')
-        .send(form)
+        .send(form, crop)
         .then(res => {
           if (!res.body.err) {
             console.log(res.body);

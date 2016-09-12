@@ -18,6 +18,8 @@ const upload = multer({
 const router = express();
 
 router.post('/propic', upload.single('propic'), (req, res) => {
+  console.log(req.body);
+  console.log(typeof req.body.left);
   const newImage = new Image({});
   Promise.try(() => {
     if (!req.user) {
@@ -51,7 +53,8 @@ router.post('/propic', upload.single('propic'), (req, res) => {
   })
   .then(() => {
     const image = new Modify(req.file.buffer);
-    return image.cropToSquare();
+    return image.crop(req.body);
+    //  return image.cropToSquare();
   })
   .then((file) => {
     const aws = new AWS(req.user.username, 'propic', newImage.id);
