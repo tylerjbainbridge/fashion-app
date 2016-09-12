@@ -25,6 +25,7 @@ class UploadProfilePicture extends Component {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       if (reader.result) {
+        console.log('got result');
         this.props.imageChanged(reader.result);
       }
     };

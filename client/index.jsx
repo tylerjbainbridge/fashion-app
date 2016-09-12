@@ -18,14 +18,14 @@ import UploadProPic from './components/UploadProPic/UploadProPicContainer';
 import NotFound from './components/NotFound/NotFoundComponent';
 import ProfileImages from './components/Profile/Images/ImagesComponent';
 import ProfileAbout from './components/Profile/About/AboutComponent';
-import UploadFit from './components/UploadFit/UploadFitComponent';
+import UploadFit from './components/UploadFit/UploadFitContainer';
 
 //  Styles.
 require('./styles/style.scss');
 require('./styles/ReactCrop.scss');
 
 //  Use _key instead of  _k.
-let history = createHistory({
+const history = createHistory({
   queryKey: '_key',
 });
 
