@@ -12,28 +12,37 @@ class App extends Component {
 
   displayLoggedIn() {
     return (
-      <div>
-        <Row>
-          <NavBar url={this.props.location.pathname} />
-        </Row>
-        <Row className="show-grid">
+      <div
+        style={{
+          paddingTop: '50px',
+        }}
+      >
+        <NavBar url={this.props.location.pathname} />
+        <div
+          className="content"
+        >
           {this.props.children}
-        </Row>
+        </div>
       </div>
     );
   }
 
   displayNotLoggedIn() {
     return (
-      <Grid>
-        <Row>
-          <NavBar url={this.props.location.pathname} />
-        </Row>
-        <br />
-        <Row className="show-grid">
-          {this.props.children}
-        </Row>
-      </Grid>
+      <div
+        style={{
+          paddingTop: '50px',
+        }}
+      >
+        <NavBar url={this.props.location.pathname} />
+        <div
+          style={{
+            float: 'left',
+          }}
+        >
+        {this.props.children}
+        </div>
+      </div>
     );
   }
 

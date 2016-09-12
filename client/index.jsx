@@ -18,6 +18,7 @@ import UploadProPic from './components/UploadProPic/UploadProPicContainer';
 import NotFound from './components/NotFound/NotFoundComponent';
 import ProfileImages from './components/Profile/Images/ImagesComponent';
 import ProfileAbout from './components/Profile/About/AboutComponent';
+import UploadFit from './components/UploadFit/UploadFitComponent';
 
 //  Styles.
 require('./styles/style.scss');
@@ -48,6 +49,7 @@ render((
           <Route path="about" component={ProfileAbout} />
         </Route>
         <Route path="/updateProfilePicture" component={UploadProPic} />
+        <Route path="/upload" component={UploadFit} />
         <Router path="*" component={NotFound} />
       </Route>
     </Router>

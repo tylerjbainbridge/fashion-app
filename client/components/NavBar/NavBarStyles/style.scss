@@ -1,56 +1,56 @@
 @import '../../../styles/colors';
 @import '../../../styles/fonts';
 
-$nav-padding: 300px;
+$nav-padding: 100px;
+$nav-top-padding: 50px;
 
 .Nav {
-  top: 0;
   display: inline-block;
-  width: 100%;
-  height: 75px;
+  width: 20%;
+  height: 100%;
+  float:left;
+  margin-right: 30px;
+  padding-left: $nav-padding;
   // background-color: $accent-color;
   // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-.NavRight {
+ul.NavRight {
   //vertical align
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  float: right;
-  padding-right: $nav-padding;
+  padding-left: 0px;
+  list-style-type: none;
+  display: inline;
+  height: 100px;
+  li {
+    padding-bottom: 10px;
+  }
 }
 
 a {
    outline: 0;
+   &:hover{
+     cursor: pointer;
+   }
 }
 
 .NavLeft {
   //vertical align
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  font-size: 40px;
+  letter-spacing: 10px;
+  padding-bottom: 30px;
 
-  float: left;
-  padding-left: $nav-padding;
   a {
     // font-family: $title-font;
     color: $title-color;
-    font-size:30px;
-    padding-bottom: 10px;
     text-decoration: none;
-    &:hover{
-      cursor: pointer;
-    }
   }
 }
 
 .NavBtn {
   //padding-left: 30px;
   font-family: $body-font;
-  font-size: 15px;
+  font-size:30px;
   font-weight: bold;
-  margin: 15px;
 }
 
 span.NavBtn {
@@ -60,19 +60,18 @@ span.NavBtn {
 button.NavBtn {
   background-color: white;
   border: none;
+  text-decoration: none;
   color: $accent-color;
+  transition: 0.5s ease;
   &:hover{
     transition: 0.5s ease;
     border-bottom: solid 1px $accent-color;
-    cursor: pointer;
   }
 }
 
 a.NavBtn {
-  padding-bottom: 3px;
   text-decoration: none;
   color: $accent-color;
-  letter-spacing: 2px;
   transition: 0.5s ease;
   &:hover{
     transition: 0.5s ease;

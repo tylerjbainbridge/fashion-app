@@ -14,19 +14,18 @@ passport.deserializeUser(Account.deserializeUser());
 const login = (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) {
-      res.send({ err: err.message });
+      return res.send({ err: err.message });
     } else if (!user) {
-      res.send({ err: 'INCORRECT_CREDENTIALS' });
+      return res.send({ err: 'INCORRECT_CREDENTIALS' });
     }
-    req.login(user, (loginError) => {
+    return req.login(user, (loginError) => {
       if (loginError) {
-        res.send({ err: loginError.message });
-      } else {
-        res.send({
-          user: _.pick(user, ['username', '_id', 'id']),
-          err: null,
-        });
+        return res.send({ err: loginError.message });
       }
+      return res.send({
+        user: _.pick(user, ['username', '_id', 'id']),
+        err: null,
+      });
     });
   })(req, res, next);
 };

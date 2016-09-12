@@ -9,6 +9,7 @@ import {
   attemptUploadProPic,
   resetUploadPage,
   deleteImage,
+  updateCrop,
 } from './UploadProPicActions';
 
 export const fields = ['propic'];
@@ -19,6 +20,7 @@ function mapStateToProps(state) {
     serverError: state.uploadProPic.get('error'),
     username: state.user.get('username'),
     modal: state.previewProPic.get('modal'),
+    crop: state.uploadProPic.get('crop'),
   };
 }
 
@@ -28,15 +30,21 @@ function mapDispatchToProps(dispatch) {
     resetUploadPage: () => dispatch(resetUploadPage()),
     deleteImage: () => dispatch(deleteImage()),
     closeModal: () => dispatch(closeModal()),
+    updateCrop: (crop) => dispatch(updateCrop(crop)),
     openPreviewModal: () => dispatch(openPreviewModal()),
     closePreviewModal: () => dispatch(closePreviewModal()),
   };
 }
 
-function upload(image, form, dispatch) {
+function upload(image, crop, form, dispatch) {
   const formData = new FormData();
   formData.append('propic', image[0]);
-  dispatch(attemptUploadProPic(formData));
+  formData.append('left', Math.floor(crop.x));
+  formData.append('top', Math.floor(crop.y));
+  formData.append('height', Math.floor(crop.height));
+  formData.append('width', Math.floor(crop.width));
+
+  dispatch(attemptUploadProPic(formData, crop));
 }
 
 const form = reduxForm({

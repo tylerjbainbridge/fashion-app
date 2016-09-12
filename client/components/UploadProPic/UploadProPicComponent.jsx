@@ -1,11 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import Dropzone from 'react-dropzone';
-import Modal from 'react-modal';
 import PreviewImage from './PreviewProPic';
 
 // import ReactCrop from 'react-image-crop';
 
 class UploadProfilePicture extends Component {
+  constructor(props) {
+    super(props);
+    this.cropper = null;
+  }
 
   componentDidMount() {
     this.props.resetUploadPage();
@@ -39,8 +42,8 @@ class UploadProfilePicture extends Component {
       serverError,
       deleteImage,
       modal,
-      closeModal,
-      closePreviewModal,
+      updateCrop,
+      crop,
     } = this.props;
     const isModalOpen = (modal === 'OPEN');
     return (
@@ -49,7 +52,7 @@ class UploadProfilePicture extends Component {
             className="childLogin form"
             encType="multipart/form-data"
             onSubmit={
-              handleSubmit(upload.bind(null, this.imageOriginal))
+              handleSubmit(upload.bind(null, this.imageOriginal, crop))
             }
           >
             <label className="logErr">
@@ -67,7 +70,7 @@ class UploadProfilePicture extends Component {
                       padding: '20px',
                     }}
                   >
-                    <div style={{ textAlign: 'center' }}>
+                    <div style={{ textAlign: 'center', border: 'none'}}>
                       <b>Click to Browse</b>
                       <br />or<br />
                       <b>Drag and Drop</b>
@@ -79,7 +82,8 @@ class UploadProfilePicture extends Component {
                 </label>
               </div>
             :
-              <PreviewImage image={image} />
+            <div>
+              <PreviewImage updateCrop={updateCrop} image={image} />
               <div className="formButtons formButtonsCont">
                 <div className="innerFormButtons">
                   <button type="submit" disabled={submitting}>
@@ -90,6 +94,7 @@ class UploadProfilePicture extends Component {
                   </button>
                 </div>
               </div>
+            </div>
              }
           </form>
       </div>
@@ -122,6 +127,7 @@ UploadProfilePicture.propTypes = {
   closePreviewModal: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   openPreviewModal: PropTypes.func.isRequired,
+  updateCrop: PropTypes.func.isRequired,
 };
 
 export default UploadProfilePicture;
