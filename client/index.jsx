@@ -48,8 +48,8 @@ render((
           <IndexRoute component={ProfileImages} />
           <Route path="about" component={ProfileAbout} />
         </Route>
-        <Route path="/updateProfilePicture" component={UploadProPic} />
-        <Route path="/upload" component={UploadFit} />
+        <Route path="/uploadProfilePicture" component={UploadProPic} />
+        <Route path="/uploadFit" component={UploadFit} />
         <Router path="*" component={NotFound} />
       </Route>
     </Router>

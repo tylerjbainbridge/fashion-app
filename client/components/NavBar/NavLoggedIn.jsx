@@ -22,8 +22,13 @@ class NavLoggedIn extends Component {
             </Link>
           </li>
           <li>
-            <Link to="/upload" className="NavBtn">
-              UPLOAD
+            <Link to="/uploadfit" className="NavBtn">
+              UPLOAD FIT
+            </Link>
+          </li>
+          <li>
+            <Link to="/uploadprofilePicture" className="NavBtn">
+              UPLOAD PROPIC
             </Link>
           </li>
           <li>

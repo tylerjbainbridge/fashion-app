@@ -10,7 +10,6 @@ export function updateImage(image) {
 }
 
 export function updateCrop(crop) {
-  console.log(crop);
   return {
     type: 'UPDATE_CROP',
     crop,

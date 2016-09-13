@@ -20,7 +20,7 @@ html, body {
 }
 
 .dropZone {
-  height: 600px;
+  height: 200px;
   width: 300px;
   text-align: center;
   border: none;
@@ -86,6 +86,42 @@ span.title {
 
     font-size: 14px;
   }
+}
+
+.uploadFitDetails {
+  label {
+    display: block;
+  }
+
+  span {
+    display: block;
+    height: 50px;
+    width: 80px;
+    padding-bottom: 25px;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  input {
+    width: 200px;
+    padding: 5px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 0.5px solid $accent-color !important;
+    background: none;
+
+    font-size: 14px;
+  }
+}
+
+#crop-preview-cont {
+  width: 150px;
+  overflow: hidden;
+  padding-top: 0px;
 }
 
 div.titleFont{

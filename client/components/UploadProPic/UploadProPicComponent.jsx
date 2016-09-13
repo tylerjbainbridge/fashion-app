@@ -90,7 +90,9 @@ class UploadProfilePicture extends Component {
                   <button type="submit" disabled={submitting}>
                     { submitting ? <i /> : <i /> } Upload
                   </button>
-                  <button onClick={deleteImage} >
+                  <button type="button" onClick={() => {
+                    this.props.resetUploadPage();
+                  }} >
                     Cancel
                   </button>
                 </div>
